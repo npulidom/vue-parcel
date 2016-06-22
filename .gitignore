@@ -1,0 +1,33 @@
+# Linux
+*~
+*.bak
+*.log
+
+# OSX
+.DS_Store
+.ds_store
+
+# PHPStorm
+.idea/*
+
+# Atom.io
+.imdone
+
+# Apache & Environment
+!.htaccess
+.env
+
+# GetText
+*.mo
+*.pot
+
+# Eslint
+.eslintrc
+
+# Build & Packages
+dist
+node_modules
+bower_components
+
+# App
+assets/

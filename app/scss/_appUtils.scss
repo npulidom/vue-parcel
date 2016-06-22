@@ -1,0 +1,249 @@
+/**
+ * App Utils
+ */
+
+/* Functions
+---------------------------------------------------------------------------------------- */
+
+/**
+ * String Replacer
+ * @param  {string} $string - The input string
+ * @param  {string} $search - The string to look for
+ * @param  {string} $replace - Replace Token
+ * @return {string}
+ */
+@function str-replace($string, $search, $replace: '') {
+
+	$index: str-index($string, $search);
+	//@debug $index, $replace;
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+/* Mixins
+---------------------------------------------------------------------------------------- */
+
+//Load Fonts
+@mixin app-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+
+	$src: null;
+	$font_path : "../fonts/" + $path + "/" + $path;
+	//@debug "Including font: " + $font_path;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($font_path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+//background image retina support
+@mixin app-bg-retina($file, $type, $width, $height, $version:'0.1') {
+
+	background-image: url($file + '.' + $type + "?v=" + $version);
+
+	//set suffix
+	$suffix: "";
+	@if $type != "svg" {
+		$suffix: "@2x";
+	}
+	//set url
+	$url: $file + $suffix + '.' + $type + "?v=" + $version;
+
+	//MediaQueries
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (-moz-min-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+		& {
+			background-image: url($url);
+			-webkit-background-size: $width $height;
+			-moz-background-size: $width $height;
+			-o-background-size: $width $height;
+			background-size: $width $height;
+		}
+	}
+}
+
+//mixin for RGBa background
+@mixin app-bg-color($factor: 0, $opacity: 0.95) {
+	background-color: rgb($factor, $factor, $factor);
+	background-color: rgba($factor, $factor, $factor, $opacity) !important;
+	//transition
+	transition: all 0.3s ease;
+}
+
+//sends a layer to background
+@mixin app-bg-fixed($height: 100%, $zindex: -1) {
+	position: fixed;
+	min-width: 100%;
+	min-height: $height;
+	top: 0;
+	left: 0;
+	z-index: $zindex;
+}
+
+//for box-spaced contents with a topbar
+@mixin app-stretch($padding-top: 0) {
+	min-height: 100%;
+	padding-top: $padding-top;
+}
+
+//bg loading for images
+@mixin app-loading-image($bg_color, $index, $width, $height, $ext: "gif") {
+	background: $bg_color;
+	@include app-bg-retina('../images/icons/icon-loading#{$index}', $ext, $width, $height);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@mixin app-scrollbar($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	//Chrome
+	::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+	::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+	::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+	//IE fallback
+	body {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}
+
+/* Placeholders
+---------------------------------------------------------------------------------------- */
+
+//inline block property
+%app-inline-block {
+	display: inline-block;
+	vertical-align: top;
+}
+
+//inline block property
+%app-absolute-block {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+//center an element
+%app-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//element centered in middle of screen (check safari!)
+%app-position-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+//vertical align middle
+%app-align-middle {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+//text wrap with overflow hidden
+%app-text-ellipsis {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Other Helpful classes
+---------------------------------------------------------------------------------------- */
+
+//Vue framework
+[v-cloak] { visibility: hidden; }
+
+//class helpers
+.app-absolute          { position: absolute; }
+.app-relative          { position: relative; }
+.app-hide              { display: none; }
+.app-height            { height: 100%; }
+.app-height-inherit    { height: inherit; }
+.app-space-small       { height: 2px; }
+.app-no-padding        { padding: 0 !important; }
+.app-no-padding-top    { padding-top: 0 !important; }
+.app-no-padding-bottom { padding-bottom: 0 !important; }
+.app-no-padding-left   { padding-left: 0 !important; }
+.app-no-padding-right  { padding-right: 0 !important; }
+
+//tables
+.app-table {
+	display: table;
+}
+.app-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+//fixed position
+.app-fixed {
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	&.top-left {
+		top: 0;
+		left: 0;
+	}
+}
+
+//absolute block
+.app-absolute-block {
+	@extend %app-absolute-block;
+}
+
+//hide an element with absolute property
+.app-absolute-hide {
+	position: absolute !important;
+	top: -99999px !important;
+	left: -99999px !important;
+	visibility: hidden;
+}
+
+//no-script fallback (uses classes fixed and center)
+noscript.app-no-js {
+	display:block;
+	width: 100%;
+	padding: 12px;
+	z-index: 10;
+	background: #FEF1CC;
+	border-top: 2px solid #EBD085;
+	border-bottom: 2px solid #EBD085;
+	color: #985A35;
+}

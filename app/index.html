@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<title>Static Webapp</title>
+
+	<link rel="icon" type="image/png" href="images/favicons/favicon.png" />
+
+	<!-- build:css assets/app.min.css -->
+	<link rel="stylesheet" type="text/css" href="assets/app.css">
+	<!-- endbuild -->
+
+</head>
+<body>
+
+	<!-- Main wrapper -->
+	<div id="wrapper">
+
+		<header>
+		    The Header
+		</header>
+		
+
+        <!-- Index wrapper -->
+        <div class="index">
+        
+        	<ul>
+        		<li>Foundation: <span class="success badge">Ok</span></li>
+        		<li>FontAwesome: <i class="fa fa-check-square"></i></li>
+                <li>Vue: <span v-text="message" v-bind:style="style"></span> </li>
+        	</ul>
+        
+        </div>
+        
+
+		<footer>
+		    The footer
+		</footer>
+		
+
+	</div>
+
+	<!-- build:js assets/app.min.js -->
+	<script type="text/javascript" src="assets/app.js"></script>
+	<!-- endbuild -->
+
+	<noscript class="app-no-js app-fixed text-center">
+        This site requires Javascript enabled in your browser.
+	</noscript>
+
+</body>
+</html>

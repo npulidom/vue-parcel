@@ -1,0 +1,21 @@
+/**
+ * Main Layout
+ */
+
+
+div#wrapper {
+    height: 100%;
+    padding: rem(60);
+    color: #fff;
+    @include background(linear-gradient(#222, #444) left repeat);
+}
+
+header {
+    color: lighten(rgb(134, 3, 129), 10%);
+    padding-bottom: rem(20);
+}
+
+footer {
+    color: darken(rgb(196, 0, 71), 5%);
+    padding-top: rem(20);
+}
