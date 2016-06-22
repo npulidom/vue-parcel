@@ -10,7 +10,7 @@ Simple scaffolding project for building static webapps.
 - Bluebird (promises):  [github](https://github.com/petkaantonov/bluebird)
 - FastClick:  [github](https://github.com/ftlabs/fastclick)
 - jQuery:  [site](https://jquery.com/)
-- jQuery Cookie:  [github](https://github.com/js-cookie/js-cookie)
+- Js Cookie:  [github](https://github.com/js-cookie/js-cookie)
 - Vue:  [site](https://vuejs.org/)
 - Velocity + UI (animations):  [site](https://julian.com/)
 
