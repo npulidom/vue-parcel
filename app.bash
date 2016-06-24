@@ -1,12 +1,13 @@
 #! /bin/bash
 # WebApp main script
 
-# stop script if an error occurs
+# stop script if an exception occurs
 set -e
+
 # current path
 CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# App Name
+# get app Name
 APP_NAME=${PWD##*/}
 APP_NAME="${APP_NAME/-webapp/}"
 
@@ -33,28 +34,25 @@ case "$1" in
 
 npm-global)
 
-	echo -e "\033[95mUpdating npm global packages... \033[0m"
+	echo -e "\033[95mInstalling npm global dependencies... \033[0m"
 
-	#modules instalation
 	sudo npm install -g $NPM_GLOBAL_DEPENDENCIES
 	;;
 
 npm)
 
-	echo -e "\033[95mUpdating npm project packages... \033[0m"
+	echo -e "\033[95mInstalling npm project dependencies... \033[0m"
 
 	if [ "$2" = "-u" ]; then
 		echo -e "\033[95mChecking for updates... \033[0m"
 		npm-check -u
 	fi
 
-	#package instalation (sudo is not required for OSX)
+	# package instalation (sudo is not required for OSX)
 	if [ "$(uname)" == "Darwin" ]; then
-		npm install
-		npm prune
+		npm install && npm prune
 	else
-		sudo npm install
-		sudo npm prune
+		sudo npm install && sudo npm prune
 	fi
 	;;
 
