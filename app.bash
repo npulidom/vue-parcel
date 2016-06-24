@@ -27,19 +27,19 @@ scriptHelp() {
 	exit
 }
 
-# check args
-if [ "$*" = "" ]; then
-	scriptHelp
-fi
 
-if [ $1 = "npm-global" ]; then
+# commands
+case "$1" in
+
+npm-global)
 
 	echo -e "\033[95mUpdating npm global packages... \033[0m"
 
 	#modules instalation
 	sudo npm install -g $NPM_GLOBAL_DEPENDENCIES
+	;;
 
-elif [ $1 = "npm" ]; then
+npm)
 
 	echo -e "\033[95mUpdating npm project packages... \033[0m"
 
@@ -56,13 +56,15 @@ elif [ $1 = "npm" ]; then
 		sudo npm install
 		sudo npm prune
 	fi
+	;;
 
-elif [ $1 = "watch" ]; then
+watch)
 
 	echo -e "\033[95mRunning gulp watch task... \033[0m"
 	gulp watch
+	;;
 
-elif [ $1 = "build" ]; then
+build)
 
 	bash app.bash clean
 
@@ -71,8 +73,9 @@ elif [ $1 = "build" ]; then
 
 	# task done!
 	echo -e "\033[92mDone! \033[0m"
+	;;
 
-elif [ $1 = "clean" ]; then
+clean)
 
 	echo -e "\033[95mCleaning dist folder... \033[0m"
 
@@ -81,7 +84,10 @@ elif [ $1 = "clean" ]; then
 
 	# task done!
 	echo -e "\033[92mDone! \033[0m"
+	;;
 
-else
-	echo -e "\033[31mInvalid command\033[0m"
-fi
+#default
+*)
+	scriptHelp
+    ;;
+esac
