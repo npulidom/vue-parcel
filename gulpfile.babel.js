@@ -32,6 +32,8 @@ import usemin        from "gulp-usemin";
 const sass_app_libs = [
     //bourbon path
     bourbon.includePaths,
+    //family.scss
+    "./node_modules/family.scss/source/src/",
     //foundation sass files
     "./node_modules/foundation-sites/scss/",
     //motion-ui

@@ -3,4 +3,11 @@
  */
 div.index {
     padding-top: rem(20);
+    //childs
+    ul li  {
+    	//family.scss
+    	@include last(1) {
+			color: orange;
+		}
+    }
 }
