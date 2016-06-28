@@ -25,6 +25,7 @@ import html_minifier from "gulp-htmlmin";
 import rev           from "gulp-rev";
 import uglify        from "gulp-uglify";
 import usemin        from "gulp-usemin";
+import sourcemaps    from "gulp-sourcemaps";
 
 /* Consts */
 
@@ -142,12 +143,14 @@ function watchApp() {
 function buildSass() {
 
     return gulp.src(app_paths.sass + "app.scss")
+            .pipe(sourcemaps.init())
             .pipe(sass({ includePaths : sass_app_libs })
                   .on("error", sass.logError))
             .pipe(autoprefixer({
                 browsers : ["last 2 versions"],
                 cascade  : false
             }))
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest(app_paths.assets))
             .pipe(browserSync.stream());
 }
