@@ -20,7 +20,7 @@ import chmod         from "gulp-chmod";
 import rename        from "gulp-rename";
 import autoprefixer  from "gulp-autoprefixer";
 import sass          from "gulp-sass";
-import css_minifier  from "gulp-cssmin";
+import css_minifier  from "gulp-clean-css";
 import html_minifier from "gulp-htmlmin";
 import rev           from "gulp-rev";
 import uglify        from "gulp-uglify";
