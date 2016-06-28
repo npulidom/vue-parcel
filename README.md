@@ -1,7 +1,7 @@
 Static WebApp project
 =======================
 
-Simple scaffolding project for building static webapps.
+Simple scaffolding project for building static webapps with gulp.
 
 ## Javascript
 
@@ -34,6 +34,7 @@ Simple scaffolding project for building static webapps.
 - ES6 Support (babelify)
 - JS Linter: [eslint](http://eslint.org/)
 - BrowserSync: [site](https://www.browsersync.io/)
+- Sourcemaps
 - Simple bash CLI `app.bash`
 
 ## Dependencies
