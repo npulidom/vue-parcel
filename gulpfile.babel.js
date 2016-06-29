@@ -3,17 +3,18 @@
  */
 
 //import libs
-import gulp        from "gulp";
-import browserify  from "browserify";
-import babelify    from "babelify";
-import source      from "vinyl-source-stream";
-import buffer      from "vinyl-buffer";
-import watchify    from "watchify";
-import assign      from "lodash.assign";
-import process     from "child_process";
-import bourbon     from "node-bourbon";
-import panini      from "panini";
-import browser     from "browser-sync";
+import gulp       from "gulp";
+import browserify from "browserify";
+import babelify   from "babelify";
+import source     from "vinyl-source-stream";
+import buffer     from "vinyl-buffer";
+import watchify   from "watchify";
+import assign     from "lodash.assign";
+import process    from "child_process";
+import bourbon    from "node-bourbon";
+import panini     from "panini";
+import importer   from "sass-importer-npm";
+import browser    from "browser-sync";
 //plugins
 import gutil         from "gulp-util";
 import chmod         from "gulp-chmod";
@@ -144,8 +145,12 @@ function buildSass() {
 
     return gulp.src(app_paths.sass + "app.scss")
             .pipe(sourcemaps.init())
-            .pipe(sass({ includePaths : sass_app_libs })
-                  .on("error", sass.logError))
+            //sass
+            .pipe(sass({ 
+                includePaths : sass_app_libs,
+                importer     : importer 
+            }).on("error", sass.logError))
+            //autoprefixer
             .pipe(autoprefixer({
                 browsers : ["last 2 versions"],
                 cascade  : false
