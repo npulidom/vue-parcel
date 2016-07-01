@@ -143,7 +143,7 @@ function watchApp() {
  */
 function buildSass() {
 
-    return gulp.src(app_paths.sass + "app.scss")
+    return gulp.src(app_paths.sass + "[^_]*.scss")
             .pipe(sourcemaps.init())
             //sass
             .pipe(sass({ 
