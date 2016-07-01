@@ -3,14 +3,16 @@
  * Foundation 6
  */
 
- //google fonts
- @import url(https://fonts.googleapis.com/css?family=Montserrat);
+//google fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
- //load fonts
- @include app-font(FontAwesome, fontawesome);
+//font awesome
+$fa-font-path: "../fonts/fontawesome";
+
+//@include app-font(Webfont, webfont);
 
 //fonts
-$app_primary_font : "ClearSansRegular", sans-serif;
+$app_primary_font : "Montserrat", Arial, sans-serif;
 
 //colors
 $app_bg_color        : #666;
@@ -21,6 +23,7 @@ $app_grey_color      : #e6e6e6;
 $app_success_color : #3adb76;
 $app_warning_color : #ffae00;
 $app_alert_color   : #ec5840;
+
 
 // Global
 // ---------

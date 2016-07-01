@@ -16,8 +16,6 @@ import "velocity.ui";
 
 //UI framework
 import "foundation";
-//motion UI (foundation)
-import "motion-ui";
 
 //FastClick init
 import fastclick from "fastclick";
