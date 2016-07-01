@@ -19,7 +19,6 @@ Simple scaffolding project for building static webapps with gulp.
 - Bourbon:  [docs](http://bourbon.io/docs/)
 - Family:  [site](https://lukyvj.github.io/family.scss/)
 - Foundation:  [docs](http://foundation.zurb.com/sites/docs/)
-- Motion-UI:  [docs](http://foundation.zurb.com/sites/docs/motion-ui.html)
 - Hover CSS:  [github](http://ianlunn.github.io/Hover/)
 - Font Awesome:  [site](http://fontawesome.io/)
 
