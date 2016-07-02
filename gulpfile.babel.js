@@ -38,8 +38,6 @@ const sass_app_libs = [
     "./node_modules/family.scss/source/src/",
     //foundation sass files
     "./node_modules/foundation-sites/scss/",
-    //motion-ui
-    "./node_modules/motion-ui/src/",
     //hover css
     "./node_modules/hover.css/scss/",
     //fontawesome css
