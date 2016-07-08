@@ -16,7 +16,7 @@ export default new function() {
      */
     self.init = function() {
 
-        let msg = "Core: Static webapp ready!";
+        let msg = "Core: static webapp ready!";
         console.log(msg);
 
         //vue instance
