@@ -12,7 +12,7 @@ import "bluebird";
 import "js-cookie";
 import "jquery";
 import "velocity";
-import "velocity.ui";
+//import "velocity.ui";
 
 //UI framework
 import "foundation";
