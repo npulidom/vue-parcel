@@ -37,11 +37,7 @@ const sass_app_libs = [
     //family.scss
     "./node_modules/family.scss/source/src/",
     //foundation sass files
-    "./node_modules/foundation-sites/scss/",
-    //hover css
-    "./node_modules/hover.css/scss/",
-    //fontawesome css
-    "./node_modules/font-awesome/scss/"
+    "./node_modules/foundation-sites/scss/"
 ];
 
 //app paths
@@ -62,7 +58,8 @@ const app_paths = {
 const browserify_opts = assign({}, watchify.args, {
     entries      : [app_paths.js + "app.js"],
     cache        : {},
-    packageCache : {}
+    packageCache : {},
+    plugin       : [watchify]
 });
 
 //browsert sync conf
@@ -70,21 +67,18 @@ var browserSync = browser.create();
 
 /** Browserify setup **/
 
-//watch & bundle webpack
-var webpack = watchify(browserify(browserify_opts))
-                        .transform(babelify, {
-                            presets : ["es2015"],
-                            ignore  : "./packages/"
-                        });
-//options
-//webpack.external("webpack_core");  //external bundle with expose name
-webpack.on("update", bundleApp);   //on any dep update, runs the bundler
-webpack.on("log", gutil.log);      //output build logs to terminal
+//browserify object with transforms
+var b = browserify(browserify_opts)
+        //es6
+        .transform(babelify, {
+            presets : ["es2015"],
+            ignore  : "./packages/"
+        });
 
 /** Tasks. TODO: implement gulp.series() v 4.x **/
 
 //build & deploy
-gulp.task("build", ["bundle-html", "build-app", "copy-resources"]);
+gulp.task("build", ["prod-node-env", "bundle-html", "build-app", "copy-resources"]);
 //watch
 gulp.task("watch", watchApp);
 //default
@@ -97,6 +91,10 @@ gulp.task("bundle-html", bundleHandleBars);
 gulp.task("build-app", buildApp);
 //copy resources
 gulp.task("copy-resources", copyResources);
+//set node env to produtction
+gulp.task("prod-node-env", function() {
+    return process.env.NODE_ENV = "production";
+});
 
 /**
  * Bundle JS package with Browserify
@@ -104,7 +102,7 @@ gulp.task("copy-resources", copyResources);
 function bundleApp() {
 
     //browserify js bundler
-    return webpack.bundle()
+    return b.bundle()
             .on("error", gutil.log.bind(gutil, "Browserify Error"))
             .pipe(source("app.js"))
             .pipe(buffer())
@@ -118,6 +116,10 @@ function bundleApp() {
  * Watch App
  */
 function watchApp() {
+
+    //setup
+    b.on("update", bundleApp); //on any dep update, runs the bundler
+    b.on("log", gutil.log);    //output build logs for watchify
 
     gutil.log(gutil.colors.green("Watching Scss, Js and Volt source files changes..."));
 
@@ -167,6 +169,7 @@ function bundleHandleBars() {
     panini.refresh();
 
     return gulp.src(app_paths.root + "*.hbs")
+            //panini + handlebars
             .pipe(panini({
                 root     : app_paths.root,
                 layouts  : app_paths.layouts,
@@ -186,6 +189,7 @@ function bundleHandleBars() {
 function buildApp() {
 
     return gulp.src(app_paths.root + "*.html")
+                //minify + rev
                 .pipe(usemin({
                     css  : [css_minifier(), rev],
                     js   : [uglify(), rev],
