@@ -1,5 +1,6 @@
 /**
  * App Utils
+ * @author Nicolas Pulido <nicolas.pulido@crazycake.cl>
  */
 
 /* Functions
@@ -54,6 +55,15 @@
 		font-style: $style;
 		font-weight: $weight;
 		src: $src;
+	}
+}
+
+//background cover image
+@mixin app-bg-cover($image_path, $attachment: fixed) {
+	//set image
+	@if $image_path != null {
+		background: url($image_path) no-repeat center center $attachment;
+		background-size: cover;
 	}
 }
 
@@ -119,25 +129,6 @@
 	background-position: center center;
 }
 
-@mixin app-scrollbar($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
-	//Chrome
-	::-webkit-scrollbar {
-		width:  $size;
-		height: $size;
-	}
-	::-webkit-scrollbar-thumb {
-		background: $foreground-color;
-	}
-	::-webkit-scrollbar-track {
-		background: $background-color;
-	}
-	//IE fallback
-	body {
-		scrollbar-face-color: $foreground-color;
-		scrollbar-track-color: $background-color;
-	}
-}
-
 /* Placeholders
 ---------------------------------------------------------------------------------------- */
 
@@ -187,31 +178,25 @@
 /* Other Helpful classes
 ---------------------------------------------------------------------------------------- */
 
-//Vue.js
+//Vue framework
 [v-cloak] { visibility: hidden; }
 
 //class helpers
 .app-absolute          { position: absolute; }
 .app-relative          { position: relative; }
 .app-hide              { display: none; }
+.app-invisible         { visibility: hidden; opacity: 0; }
 .app-height            { height: 100%; }
 .app-height-inherit    { height: inherit; }
-.app-space-small       { height: 2px; }
 .app-no-padding        { padding: 0 !important; }
 .app-no-padding-top    { padding-top: 0 !important; }
 .app-no-padding-bottom { padding-bottom: 0 !important; }
 .app-no-padding-left   { padding-left: 0 !important; }
 .app-no-padding-right  { padding-right: 0 !important; }
-
-//tables
-.app-table {
-	display: table;
-}
-.app-table-cell {
-	display: table-cell;
-	vertical-align: middle;
-}
-
+//displays
+.app-table 			{ display: table; }
+.app-table-cell 	{ display: table-cell; vertical-align: middle; }
+.app-absolute-block { @extend %app-absolute-block; }
 //fixed position
 .app-fixed {
 	position: fixed;
@@ -223,25 +208,12 @@
 	}
 }
 
-//absolute block
-.app-absolute-block {
-	@extend %app-absolute-block;
-}
-
-//hide an element with absolute property
-.app-absolute-hide {
-	position: absolute !important;
-	top: -99999px !important;
-	left: -99999px !important;
-	visibility: hidden;
-}
-
 //no-script fallback (uses classes fixed and center)
 noscript.app-no-js {
 	display:block;
 	width: 100%;
 	padding: 12px;
-	z-index: 10;
+	z-index: 9999;
 	background: #FEF1CC;
 	border-top: 2px solid #EBD085;
 	border-bottom: 2px solid #EBD085;
