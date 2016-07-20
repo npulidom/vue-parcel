@@ -21,7 +21,7 @@ export default new function() {
 
         //vue instance
         self.vm = new Vue({
-            el: "#wrapper",
+            el: "#app",
             data: {
                 message: 'Hello Vue.js!',
                 style: {
