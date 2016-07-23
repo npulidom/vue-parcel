@@ -1,7 +1,6 @@
 /**
  * App.js
  * Browserify can only analyze static requires.
- * It is not in the scope of browserify to handle dynamic requires.
  */
 
 //essential
