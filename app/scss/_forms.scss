@@ -6,25 +6,12 @@
 /* Classes
 ---------------------------------------------------------------------------------------- */
 
-//forms
-.app-form {
-	//error messages
-	small.form-error {
-		display: block;
-		width: 100%;
-		margin: 0;
-		padding-top: rem-calc(12);
-		font-style: italic;
-		color: $app_alert_color;
-	}
-}
-
 button.app-btn {
-	padding: rem-calc(16 30);
-	background: $app_secondary_color;
-	font-size: rem-calc(12);
+	padding: rem(16) rem(30);
+	background: $secondary_color;
+	font-size: rem(12);
 	text-transform: uppercase;
-	&:hover, &:active, &:focus { background: darken($app_secondary_color, 10%); }
+	&:hover, &:active, &:focus { background: darken($secondary_color, 10%); }
 	&:disabled, &:hover:disabled { background: #999; }
 }
 

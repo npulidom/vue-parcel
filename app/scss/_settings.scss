@@ -12,17 +12,11 @@ $fa-font-path: "../fonts/fontawesome";
 //@include app-font(Webfont, webfont);
 
 //fonts
-$app_primary_font : "Montserrat", Arial, sans-serif;
-
+$primary_font : "Montserrat", Arial, sans-serif;
 //colors
-$app_bg_color        : #666;
-$app_primary_color   : #fff;
-$app_secondary_color : #009be1;
-$app_grey_color      : #e6e6e6;
-
-$app_success_color : #3adb76;
-$app_warning_color : #ffae00;
-$app_alert_color   : #ec5840;
+$primary_color   : #fff;
+$secondary_color : #009be1;
+$app_gray_color  : #e6e6e6;
 
 
 // Global
@@ -44,12 +38,12 @@ $foundation-palette: (
 // Typography
 // ---------
 
-$body-background  : $app_bg_color;
-$body-font-color  : $app_primary_color;
-$body-font-family : $app_primary_font;
+$body-background  : #666;
+$body-font-color  : $primary_color;
+$body-font-family : $primary_font;
 $body-antialiased : false;
 
-$anchor-color       : $app_secondary_color;
+$anchor-color       : $secondary_color;
 $anchor-color-hover : scale-color($anchor-color, $lightness: -14%);
 
 $header-sizes: (

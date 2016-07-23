@@ -18,3 +18,8 @@ footer {
     color: darken(rgb(196, 0, 71), 5%);
     padding-top: rem(20);
 }
+
+//grid (no restrictions)
+div.row {
+	max-width: 100%;
+}

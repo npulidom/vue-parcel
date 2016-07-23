@@ -60,11 +60,9 @@
 
 //background cover image
 @mixin app-bg-cover($image_path, $attachment: fixed) {
-	//set image
-	@if $image_path != null {
-		background: url($image_path) no-repeat center center $attachment;
-		background-size: cover;
-	}
+
+	background: url($image_path) no-repeat center center $attachment;
+	background-size: cover;
 }
 
 //background image retina support
@@ -186,6 +184,8 @@
 .app-relative          { position: relative; }
 .app-hide              { display: none; }
 .app-invisible         { visibility: hidden; opacity: 0; }
+.app-width             { width: 100%; }
+.app-width-inherit     { width: inherit; }
 .app-height            { height: 100%; }
 .app-height-inherit    { height: inherit; }
 .app-no-padding        { padding: 0 !important; }
