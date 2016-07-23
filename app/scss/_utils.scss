@@ -31,8 +31,8 @@
 @mixin app-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 
 	$src: null;
-	$font_path : "../fonts/" + $path + "/" + $path;
-	//@debug "Including font: " + $font_path;
+	$font-path : "../fonts/" + $path + "/" + $path;
+	//@debug "Including font: " + $font-path;
 
 	$extmods: (
 		eot: "?",
@@ -47,7 +47,7 @@
 	@each $ext in $exts {
 		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
 		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-		$src: append($src, url(quote($font_path + "." + $extmod)) format(quote($format)), comma);
+		$src: append($src, url(quote($font-path + "." + $extmod)) format(quote($format)), comma);
 	}
 
 	@font-face {
@@ -58,10 +58,9 @@
 	}
 }
 
-//background cover image
-@mixin app-bg-cover($image_path, $attachment: fixed) {
-
-	background: url($image_path) no-repeat center center $attachment;
+//background cover image (3rd argument to use custom background to small & medium screen)
+@mixin app-bg-cover($image-path, $attachment: fixed) {
+	background: url($image-path) no-repeat center center $attachment;
 	background-size: cover;
 }
 
@@ -99,7 +98,6 @@
 @mixin app-bg-color($factor: 0, $opacity: 0.95) {
 	background-color: rgb($factor, $factor, $factor);
 	background-color: rgba($factor, $factor, $factor, $opacity) !important;
-	//transition
 	transition: all 0.3s ease;
 }
 
@@ -120,8 +118,8 @@
 }
 
 //bg loading for images
-@mixin app-loading-image($bg_color, $index, $width, $height, $ext: "gif") {
-	background: $bg_color;
+@mixin app-loading-image($bg-color, $index, $width, $height, $ext: "gif") {
+	background: $bg-color;
 	@include app-bg-retina('../images/icons/icon-loading#{$index}', $ext, $width, $height);
 	background-repeat: no-repeat;
 	background-position: center center;
