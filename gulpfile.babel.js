@@ -93,6 +93,10 @@ gulp.task("build-app", buildApp);
 gulp.task("copy-resources", copyResources);
 //set node env to produtction
 gulp.task("prod-node-env", function() {
+
+    if(typeof process.env == "undefined")
+        process.env = {};
+    
     return process.env.NODE_ENV = "production";
 });
 
