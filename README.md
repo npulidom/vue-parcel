@@ -1,6 +1,8 @@
 Static WebApp project
 =======================
 
+[![GitHub version](https://badge.fury.io/gh/npulidom%2Fstatic-webapp.svg)](https://badge.fury.io/gh/npulidom%2Fstatic-webapp)
+
 Simple scaffolding project for building static webapps with gulp.
 
 ## Javascript
