@@ -10,7 +10,7 @@ import source     from "vinyl-source-stream";
 import buffer     from "vinyl-buffer";
 import watchify   from "watchify";
 import assign     from "lodash.assign";
-import process    from "child_process";
+import cprocess   from "child_cprocess";
 import bourbon    from "node-bourbon";
 import panini     from "panini";
 import importer   from "sass-importer-npm";
@@ -92,11 +92,8 @@ gulp.task("build-app", buildApp);
 //copy resources
 gulp.task("copy-resources", copyResources);
 //set node env to produtction
-gulp.task("prod-node-env", function() {
+gulp.task("prod-node-env", function() { 
 
-    if(typeof process.env == "undefined")
-        process.env = {};
-    
     return process.env.NODE_ENV = "production";
 });
 
@@ -209,10 +206,10 @@ function buildApp() {
 function copyResources() {
 
     //images
-    process.exec("mkdir -p dist/images");
-    process.exec("cp -R app/images/ dist/images/");
+    cprocess.exec("mkdir -p dist/images");
+    cprocess.exec("cp -R app/images/ dist/images/");
 
     //fonts
-    process.exec("mkdir -p dist/fonts");
-    process.exec("cp -R app/fonts/ dist/fonts/");
+    cprocess.exec("mkdir -p dist/fonts");
+    cprocess.exec("cp -R app/fonts/ dist/fonts/");
 }
