@@ -5,7 +5,6 @@
 
 # OSX
 .DS_Store
-.ds_store
 
 # PHPStorm
 .idea/*
