@@ -10,24 +10,16 @@
 # PHPStorm
 .idea/*
 
-# Atom.io
-.imdone
-
 # Apache & Environment
 !.htaccess
 .env
 
-# GetText
-*.mo
-*.pot
-
-# Eslint
-.eslintrc
-
 # Build & Packages
-dist
 node_modules
 bower_components
+vendor
+tmp
 
 # App
-assets/
+app/assets/*.css
+app/assets/*.js
