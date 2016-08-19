@@ -21,6 +21,9 @@ import fastclick from "fastclick";
 //init
 fastclick(document.body);
 
+//init foundation
+$(document).foundation();
+
 //app core
 import core from "./src/core.js";
 //init
