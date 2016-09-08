@@ -10,7 +10,7 @@ import source     from "vinyl-source-stream";
 import buffer     from "vinyl-buffer";
 import watchify   from "watchify";
 import assign     from "lodash.assign";
-import cprocess   from "child_cprocess";
+import cprocess   from "child_process";
 import bourbon    from "node-bourbon";
 import panini     from "panini";
 import importer   from "sass-importer-npm";
