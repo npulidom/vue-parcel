@@ -47,7 +47,13 @@ Simple scaffolding project for building static webapps with gulp.
 
 ## Usage
 
-Run bash app.bash to see commands (consider an alias)
+Install dependencies and run gulp. Example: `index.hbs` (Handlebars file).
+```
+bash app.bash npm
+bash app.bash watch
+```
+
+Run bash app.bash to see other commands (consider an alias)
 ```
 bash app.bash
 ```
