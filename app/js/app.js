@@ -16,6 +16,13 @@ import "velocity";
 //UI framework
 import "foundation";
 
+//TODO: bind gulp (node) environment.
+if(typeof ENV !== "undefined" && ENV === "production") {
+
+    Vue.config.devtools = false;
+    Vue.config.silent   = true;
+}
+
 //FastClick init
 import fastclick from "fastclick";
 //init
