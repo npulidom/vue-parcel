@@ -177,43 +177,7 @@
 //Vue framework
 [v-cloak] { visibility: hidden; }
 
-//class helpers
-.app-absolute          { position: absolute; }
-.app-relative          { position: relative; }
-.app-hide              { display: none; }
-.app-invisible         { visibility: hidden; opacity: 0; }
-.app-width             { width: 100%; }
-.app-width-inherit     { width: inherit; }
-.app-height            { height: 100%; }
-.app-height-inherit    { height: inherit; }
-.app-no-padding        { padding: 0 !important; }
-.app-no-padding-top    { padding-top: 0 !important; }
-.app-no-padding-bottom { padding-bottom: 0 !important; }
-.app-no-padding-left   { padding-left: 0 !important; }
-.app-no-padding-right  { padding-right: 0 !important; }
-//displays
-.app-table 			{ display: table; }
-.app-table-cell 	{ display: table-cell; vertical-align: middle; }
-.app-absolute-block { @extend %app-absolute-block; }
-//fixed position
-.app-fixed {
-	position: fixed;
-	width: 100%;
-	z-index: 99;
-	&.top-left {
-		top: 0;
-		left: 0;
-	}
-}
+.app-invisible { visibility: hidden; opacity: 0; }
+.app-width     { width: 100%; }
+.app-height    { height: 100%; }
 
-//no-script fallback (uses classes fixed and center)
-noscript.app-no-js {
-	display:block;
-	width: 100%;
-	padding: 12px;
-	z-index: 9999;
-	background: #FEF1CC;
-	border-top: 2px solid #EBD085;
-	border-bottom: 2px solid #EBD085;
-	color: #985A35;
-}

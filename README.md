@@ -20,7 +20,9 @@ Simple scaffolding project for building static webapps with gulp.
 
 - Bourbon:  [docs](http://bourbon.io/docs/)
 - Family:  [site](https://lukyvj.github.io/family.scss/)
-- Foundation:  [docs](http://foundation.zurb.com/sites/docs/)
+- Breakpoints:  [site](https://github.com/at-import/breakpoint)
+- Basscss:  [site](http://www.basscss.com/)
+- Normalize:  [site](https://necolas.github.io/normalize.css/)
 - Hover CSS:  [github](http://ianlunn.github.io/Hover/)
 - Font Awesome:  [site](http://fontawesome.io/)
 

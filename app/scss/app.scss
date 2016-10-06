@@ -6,18 +6,15 @@
 ---------------------------------------------------------------------------------------- */
 @charset "utf-8";
 
-//Main Files
-@import "utils";
+//libraries
 @import "family";
 @import "bourbon";
+@import "normalize";
 
-//foundation libs
-@import "util/util";
+@import "utils";
 @import "settings";
-@import "foundation";
-
-//Foundation includes (true enables flex-box)
-@include foundation-everything(true);
+@import "basscss-sass/scss/basscss";
+@import "breakpoint-sass/stylesheets/breakpoint";
 
 //Partials
 @import "layout";

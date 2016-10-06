@@ -11,10 +11,6 @@ import "bluebird";
 import "js-cookie";
 import "jquery";
 import "velocity";
-//import "velocity.ui";
-
-//UI framework
-import "foundation";
 
 //TODO: bind gulp (node) environment.
 if(typeof ENV !== "undefined" && ENV === "production") {
@@ -27,9 +23,6 @@ if(typeof ENV !== "undefined" && ENV === "production") {
 import fastclick from "fastclick";
 //init
 fastclick(document.body);
-
-//init foundation
-$(document).foundation();
 
 //app core
 import core from "./src/core.js";
