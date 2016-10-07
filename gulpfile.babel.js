@@ -36,8 +36,6 @@ const sass_app_libs = [
     bourbon.includePaths,
     //family.scss
     "./node_modules/family.scss/source/src/",
-    //foundation sass files
-    "./node_modules/foundation-sites/scss/"
 ];
 
 //app paths
@@ -153,7 +151,7 @@ function buildSass() {
             }).on("error", sass.logError))
             //autoprefixer
             .pipe(autoprefixer({
-                browsers : ["last 2 versions"],
+                browsers : ["last 3 versions"],
                 cascade  : false
             }))
             .pipe(sourcemaps.write())
