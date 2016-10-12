@@ -187,7 +187,7 @@ function bundleHandleBars() {
  */
 function buildApp() {
 
-    return gulp.src(app_paths.root + "*.html")
+    return gulp.src([app_paths.root + "index.html"])
                 //minify + rev
                 .pipe(usemin({
                     css  : [css_minifier(), rev],
