@@ -49,38 +49,22 @@ Simple scaffolding project for building static webapps with gulp.
 
 ## Usage
 
-Install dependencies and run gulp. Example: `index.hbs` (Handlebars file).
+Install global & local npm dependencies (first time only).
 ```
-bash app.bash npm
-bash app.bash watch
-```
-
-Run bash app.bash to see other commands (consider an alias)
-```
-bash app.bash
+npm run install
 ```
 
-Install global dependencies
+Check for npm dependencies updates.
 ```
-bash app.bash npm-global
-```
-
-Install/update project dependencies
-```
-bash app.bash npm
-```
-
-Library updater with `npm-check`
-```
-bash app.bash npm -u
+npm run update
 ```
 
 Watch **scss**, **js** or **hbs** files (gulp watch)
 ```
-bash app.bash watch
+npm run watch
 ```
 
 Build app for distribution (gulp build)
 ```
-bash app.bash build
+npm run build
 ```

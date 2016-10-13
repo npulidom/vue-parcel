@@ -1,7 +1,8 @@
 #! /bin/bash
-# WebApp main script
 
-# stop script if an exception occurs
+# WebApp main script for OSX, Ubuntu
+
+# stop script if an exception raises
 set -e
 
 # current path
@@ -15,7 +16,7 @@ APP_NAME="${APP_NAME/-webapp/}"
 DIST_PATH=$CURRENT_PATH"/dist/"
 
 # npm dependencies
-NPM_GLOBAL_DEPENDENCIES="gulp npm-check eslint"
+NPM_GLOBAL_DEPENDENCIES="gulp npm-check"
 
 # help output
 scriptHelp() {
@@ -27,7 +28,6 @@ scriptHelp() {
 	echo -e "\033[95m clean: Cleans dist folder.\033[0m"
 	exit
 }
-
 
 # commands
 case "$1" in
@@ -49,11 +49,7 @@ npm)
 	fi
 
 	# package instalation (sudo is not required for OSX)
-	if [ "$(uname)" == "Darwin" ]; then
-		npm install && npm prune
-	else
-		sudo npm install && sudo npm prune
-	fi
+	npm install && npm prune
 	;;
 
 watch)
@@ -69,7 +65,7 @@ build)
 	echo -e "\033[95mRunning gulp build task... \033[0m"
 	gulp build
 
-	# task done!
+	# task done
 	echo -e "\033[92mDone! \033[0m"
 	;;
 
@@ -80,7 +76,7 @@ clean)
 	#clean dist folder
 	rm -rf $DIST_PATH
 
-	# task done!
+	# task done
 	echo -e "\033[92mDone! \033[0m"
 	;;
 

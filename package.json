@@ -4,7 +4,13 @@
   "readme": "Run npm install for devDependencies.",
   "repository": "private",
   "license": "MIT",
-  "main": "gulpfile.babel.js",
+  "main": "README.md",
+  "scripts": {
+    "install": "bash app.bash npm-global && bash app.bash npm",
+    "update": "bash app.bash npm -u",
+    "watch": "bash app.bash watch",
+    "build": "bash app.bash build"
+  },
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-preset-es2015": "^6.16.0",
