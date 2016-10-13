@@ -1,4 +1,4 @@
-Static WebApp project
+Static Webapp project
 =======================
 
 [![GitHub version](https://badge.fury.io/gh/npulidom%2Fstatic-webapp.svg)](https://badge.fury.io/gh/npulidom%2Fstatic-webapp)
