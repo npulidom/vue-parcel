@@ -23,7 +23,7 @@ export default new function() {
         self.vm = new Vue({
             el: "#app",
             data: {
-                message: 'Hello Vue.js!',
+                message: 'Hello Vue.js vaadd!',
                 style: {
                     color: 'rgb(224, 232, 66)'
                 }

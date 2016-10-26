@@ -187,7 +187,12 @@ function bundleHandleBars() {
  */
 function buildApp() {
 
-    return gulp.src([app_paths.root + "index.html"])
+    //TODO: multiple files (test glob src input)
+    let file_name = "index";
+
+    gutil.log(gutil.colors.yellow("Procesing file " + app_paths.root + file_name + ".html"));
+
+    return gulp.src(app_paths.root + file_name + ".html")
                 //minify + rev
                 .pipe(usemin({
                     css  : [css_minifier(), rev],
