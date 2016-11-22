@@ -6,10 +6,10 @@
   "license": "MIT",
   "main": "README.md",
   "scripts": {
-    "install": "bash app.bash npm-global && bash app.bash npm",
-    "update": "bash app.bash npm -u",
-    "watch": "bash app.bash watch",
-    "build": "bash app.bash build"
+    "install": "npm install -g gulp npm-check && npm install",
+    "update": "npm-check -u && npm prune",
+    "watch": "gulp watch",
+    "build": "rm -rf dist && gulp build"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -38,8 +38,7 @@
     "sass-importer-npm": "^1.0.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "vue": "^2.0.2",
-    "vueify": "^9.2.4",
+    "vue": "^2.1.0",
     "watchify": "^3.3.0"
   },
   "dependencies": {

@@ -14,7 +14,7 @@ Simple scaffolding project for building static webapps with gulp.
 - jQuery:  [site](https://jquery.com/)
 - Js Cookie:  [github](https://github.com/js-cookie/js-cookie)
 - Vue:  [site](https://vuejs.org/)
-- Velocity + UI (animations):  [site](https://julian.com/)
+- Velocity Animation Engine:  [site](https://julian.com/)
 
 ## Sass
 
@@ -44,7 +44,7 @@ Simple scaffolding project for building static webapps with gulp.
 - NodeJs 4 or greater.
 - Npm 3 or greater.
 - Npm global packages: **gulp**, **npm-check**.
-- Ubuntu or OSX.
+- Linux or OSX.
 
 ## Usage
 
