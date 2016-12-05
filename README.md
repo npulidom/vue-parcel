@@ -48,9 +48,9 @@ Simple scaffolding project for building static webapps with gulp.
 
 ## Usage
 
-Install global & local npm dependencies (first time only).
+Initial setup, installs global & local npm dependencies (first time only).
 ```
-npm run install
+npm run setup
 ```
 
 Check for npm dependencies updates.
