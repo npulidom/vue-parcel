@@ -1,15 +1,6 @@
-# Linux
+# Linux & OSX
 *~
-*.bak
-*.log
-
-# OSX
 .DS_Store
-
-
-# Apache & Environment
-!.htaccess
-.env
 
 # Build & Packages
 node_modules
