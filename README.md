@@ -24,8 +24,8 @@ Simple scaffolding project for building static webapps with gulp.
 - Material Design Colors: [github](https://github.com/themekit/sass-md-colors)
 - Basscss:  [site](http://www.basscss.com/)
 - Normalize:  [site](https://necolas.github.io/normalize.css/)
-- Hover CSS:  [github](http://ianlunn.github.io/Hover/)
 - Font Awesome:  [site](http://fontawesome.io/)
+- Hover CSS (disabled by defauly):  [github](http://ianlunn.github.io/Hover/)
 
 ## HTML Template
 
