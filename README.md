@@ -21,6 +21,7 @@ Simple scaffolding project for building static webapps with gulp.
 - Bourbon:  [docs](http://bourbon.io/docs/)
 - Family:  [site](https://lukyvj.github.io/family.scss/)
 - Breakpoints:  [site](https://github.com/at-import/breakpoint)
+- Material Design Colors: [github](https://github.com/themekit/sass-md-colors)
 - Basscss:  [site](http://www.basscss.com/)
 - Normalize:  [site](https://necolas.github.io/normalize.css/)
 - Hover CSS:  [github](http://ianlunn.github.io/Hover/)
