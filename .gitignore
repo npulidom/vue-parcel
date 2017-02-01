@@ -13,9 +13,7 @@
 
 # Build & Packages
 node_modules
-bower_components
 vendor
-tmp
 
 # App
 app/*.html
