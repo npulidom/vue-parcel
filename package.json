@@ -55,6 +55,7 @@
     "lodash": "^4.16.4",
     "node-bourbon": "^4.2.8",
     "normalize.css": "^5.0.0",
+    "sass-md-colors": "^1.0.0",
     "velocity-animate": "^1.2.3"
   },
   "browserify": {

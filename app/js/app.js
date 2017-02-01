@@ -3,7 +3,6 @@
  * Browserify can only analyze static requires.
  */
 
-//essential
 import "html5shiv";
 import "lodash";
 import "vue";
@@ -12,19 +11,21 @@ import "js-cookie";
 import "jquery";
 import "velocity";
 
-//TODO: bind gulp (node) environment.
+// TODO: bind gulp (node) environment.
 if(typeof ENV !== "undefined" && ENV === "production") {
 
     Vue.config.devtools = false;
     Vue.config.silent   = true;
 }
 
-//FastClick init
+// FastClick init
 import fastclick from "fastclick";
-//init
+// init
 fastclick(document.body);
 
-//app core
+// app core
 import core from "./src/core.js";
-//init
+// init
 core.init();
+// register global
+window.core = core;
