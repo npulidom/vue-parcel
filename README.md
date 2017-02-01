@@ -25,7 +25,7 @@ Simple scaffolding project for building static webapps with gulp.
 - Basscss:  [site](http://www.basscss.com/)
 - Normalize:  [site](https://necolas.github.io/normalize.css/)
 - Font Awesome:  [site](http://fontawesome.io/)
-- Hover CSS (disabled by defauly):  [github](http://ianlunn.github.io/Hover/)
+- Hover CSS (disabled by default):  [github](http://ianlunn.github.io/Hover/)
 
 ## HTML Template
 
