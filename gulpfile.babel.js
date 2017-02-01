@@ -151,7 +151,7 @@ function buildSass() {
             }).on("error", sass.logError))
             //autoprefixer
             .pipe(autoprefixer({
-                browsers : ["last 3 versions"],
+                browsers : ["last 4 versions"],
                 cascade  : false
             }))
             .pipe(sourcemaps.write())
