@@ -28,7 +28,7 @@
 ---------------------------------------------------------------------------------------- */
 
 //Load Fonts
-@mixin app-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin app-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf otf svg) {
 
 	$src: null;
 	$font-path : "../fonts/" + $path + "/" + $path;
