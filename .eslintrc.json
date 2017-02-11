@@ -10,7 +10,8 @@
         "jQuery"     : false,
         "_"          : false,
         "Vue"        : false,
-        "FastClick"  : false
+        "FastClick"  : false,
+        "core"       : false
     },
     "parserOptions": {
         "sourceType": "module"
