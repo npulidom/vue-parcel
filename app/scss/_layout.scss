@@ -14,18 +14,18 @@ body {
 
 div#app {
     height: 100%;
-    padding: rem(60);
+    padding: 60px;
     color: #fff;
 }
 
 header {
     color: lighten(rgb(134, 3, 129), 10%);
-    padding-bottom: rem(20);
+    padding-bottom: 20px;
 }
 
 footer {
     color: darken(rgb(196, 0, 71), 5%);
-    padding-top: rem(20);
+    padding-top: 20px;
 }
 
 //no-script fallback (uses classes fixed and center)
