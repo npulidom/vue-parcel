@@ -129,13 +129,7 @@
 ---------------------------------------------------------------------------------------- */
 
 //inline block property
-%app-inline-block {
-	display: inline-block;
-	vertical-align: top;
-}
-
-//inline block property
-%app-absolute-block {
+%absolute-block {
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -143,14 +137,14 @@
 }
 
 //center an element
-%app-center {
+%block-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 //element centered in middle of screen (check safari!)
-%app-position-center {
+%position-center {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -158,14 +152,14 @@
 }
 
 //vertical align middle
-%app-align-middle {
+%align-middle {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
 //text wrap with overflow hidden
-%app-text-ellipsis {
+%text-ellipsis {
 	overflow-x: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -177,7 +171,7 @@
 //Vue framework
 [v-cloak] { visibility: hidden; }
 
-.app-invisible { visibility: hidden; opacity: 0; }
-.app-width     { width: 100%; }
-.app-height    { height: 100%; }
+.invisible { visibility: hidden; opacity: 0; }
+.w-100     { width: 100%; }
+.h-100     { height: 100%; }
 
