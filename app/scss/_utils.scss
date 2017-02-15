@@ -28,7 +28,7 @@
 ---------------------------------------------------------------------------------------- */
 
 //Load Fonts
-@mixin app-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf otf svg) {
+@mixin load-font($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf otf svg) {
 
 	$src: null;
 	$font-path : "../fonts/" + $path + "/" + $path;
@@ -59,13 +59,13 @@
 }
 
 //background cover image (3rd argument to use custom background to small & medium screen)
-@mixin app-bg-cover($image-path, $attachment: fixed) {
+@mixin bg-cover($image-path, $attachment: fixed) {
 	background: url($image-path) no-repeat center center $attachment;
 	background-size: cover;
 }
 
 //background image retina support
-@mixin app-bg-retina($file, $type, $width, $height, $version:'0.1') {
+@mixin bg-retina($file, $type, $width, $height, $version:'0.1') {
 
 	background-image: url($file + '.' + $type + "?v=" + $version);
 
@@ -95,34 +95,20 @@
 }
 
 //mixin for RGBa background
-@mixin app-bg-color($factor: 0, $opacity: 0.95) {
+@mixin bg-color($factor: 0, $opacity: 0.95) {
 	background-color: rgb($factor, $factor, $factor);
 	background-color: rgba($factor, $factor, $factor, $opacity) !important;
 	transition: all 0.3s ease;
 }
 
 //sends a layer to background
-@mixin app-bg-fixed($height: 100%, $zindex: -1) {
+@mixin bg-fixed($height: 100%, $zindex: -1) {
 	position: fixed;
 	min-width: 100%;
 	min-height: $height;
 	top: 0;
 	left: 0;
 	z-index: $zindex;
-}
-
-//for box-spaced contents with a topbar
-@mixin app-stretch($padding-top: 0) {
-	min-height: 100%;
-	padding-top: $padding-top;
-}
-
-//bg loading for images
-@mixin app-loading-image($bg-color, $index, $width, $height, $ext: "gif") {
-	background: $bg-color;
-	@include app-bg-retina('../images/icons/icon-loading#{$index}', $ext, $width, $height);
-	background-repeat: no-repeat;
-	background-position: center center;
 }
 
 /* Placeholders
