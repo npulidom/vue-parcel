@@ -6,11 +6,11 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 //font awesome
+$fa-font-path: "../fonts/fontawesome/" !default;
 @import "font-awesome/scss/font-awesome";
-$fa-font-path: "../fonts/fontawesome";
 
 // include a local font
-//@include app-font("fontname", "fontname");
+//@include load-font("fontname", "fontname");
 
 //fonts
 $primary-font : "Montserrat", Arial, sans-serif;
