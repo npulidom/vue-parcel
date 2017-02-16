@@ -97,7 +97,6 @@
 /* Placeholders
 ---------------------------------------------------------------------------------------- */
 
-//inline block property
 %absolute-block {
 	display: block;
 	position: absolute;
@@ -105,29 +104,25 @@
 	height: 100%;
 }
 
-//center an element
-%block-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-//element centered in middle of screen (check safari!)
-%position-center {
+%absolute-center {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-//vertical align middle
+%block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 %align-middle {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-//text wrap with overflow hidden
 %text-ellipsis {
 	overflow-x: hidden;
 	white-space: nowrap;
