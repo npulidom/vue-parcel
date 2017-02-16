@@ -94,23 +94,6 @@
 	}
 }
 
-//mixin for RGBa background
-@mixin bg-color($factor: 0, $opacity: 0.95) {
-	background-color: rgb($factor, $factor, $factor);
-	background-color: rgba($factor, $factor, $factor, $opacity) !important;
-	transition: all 0.3s ease;
-}
-
-//sends a layer to background
-@mixin bg-fixed($height: 100%, $zindex: -1) {
-	position: fixed;
-	min-width: 100%;
-	min-height: $height;
-	top: 0;
-	left: 0;
-	z-index: $zindex;
-}
-
 /* Placeholders
 ---------------------------------------------------------------------------------------- */
 
