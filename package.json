@@ -3,7 +3,7 @@
   "description": "Static Webapp",
   "readme": "Run npm install for devDependencies.",
   "repository": "private",
-  "license": "MIT",
+  "license": "Unlicense",
   "main": "README.md",
   "scripts": {
     "setup": "npm install -g gulp npm-check && npm install",
