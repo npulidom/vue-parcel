@@ -14,8 +14,9 @@ import "velocity";
 // TODO: bind gulp (node) environment.
 if(typeof ENV !== "undefined" && ENV === "production") {
 
-    Vue.config.devtools = false;
-    Vue.config.silent   = true;
+    Vue.config.silent        = true;
+    Vue.config.devtools      = false;
+    Vue.config.productionTip = false;
 }
 
 // FastClick init
