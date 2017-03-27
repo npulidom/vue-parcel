@@ -38,7 +38,7 @@
     "sass-importer-npm": "^1.0.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "vue": "^2.2.1",
+    "vue": "^2.2.6",
     "watchify": "^3.3.0"
   },
   "dependencies": {
