@@ -10,10 +10,10 @@
 
 <template>
 	<div class="home">
-		<p>
-			{{ home_text }} <i class="fa fa-thumbs-o-up"></i>
-		</p>
-		<router-link to="/section"> Go to Section </router-link>
+		<p> <i class="fa fa-thumbs-o-up"></i> {{ home_text }} </p>
+		<router-link to="/section">
+			 Go to Section
+		</router-link>
 	</div>
 </template>
 

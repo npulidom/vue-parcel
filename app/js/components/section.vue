@@ -10,10 +10,10 @@
 
 <template>
 	<div class="section">
-		<p>
-			{{ section_text }} <i class="fa fa-thumbs-o-up"></i>
-		</p>
-		<router-link to="/"> Go to Home </router-link>
+		<p> <i class="fa fa-thumbs-o-up"></i> {{ section_text }} </p>
+		<router-link to="/">
+			 Go to Home
+		</router-link>
 	</div>
 </template>
 
