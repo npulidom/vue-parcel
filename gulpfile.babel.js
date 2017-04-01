@@ -27,7 +27,7 @@ import rev           from "gulp-rev";
 import uglify        from "gulp-uglify";
 import usemin        from "gulp-usemin";
 import sourcemaps    from "gulp-sourcemaps";
-import stripdebug 	 from "gulp-strip-debug";
+import stripdebug    from "gulp-strip-debug";
 
 /* Consts */
 
