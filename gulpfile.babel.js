@@ -84,11 +84,13 @@ var b = browserify(browserify_opts)
 /** Tasks. TODO: implement gulp.series() v 4.x **/
 
 //build & deploy
-gulp.task("build", ["prod-node-env", "bundle-html", "build-app", "copy-resources"]);
+gulp.task("build", ["prod-node-env", "bundle-js", "bundle-html", "build-app", "copy-resources"]);
 //watch
 gulp.task("watch", watchApp);
 //default
 gulp.task("default", ["watch"]);
+//bundle js
+gulp.task("bundle-js", bundleHandleBars);
 //bundle html
 gulp.task("bundle-html", bundleHandleBars);
 //build app
@@ -101,7 +103,7 @@ gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; }
 /**
  * Bundle JS package with Browserify
  */
-function bundleApp() {
+function bundleJs() {
 
     //browserify js bundler
     return b.bundle()
@@ -119,7 +121,7 @@ function bundleApp() {
 function watchApp() {
 
     //setup
-    b.on("update", bundleApp); //on any dep update, runs the bundler
+    b.on("update", bundleJs); //on any dep update, runs the bundler
     b.on("log", gutil.log);    //output build logs for watchify
     //plugins
     b.plugin(hmr);
@@ -134,7 +136,7 @@ function watchApp() {
     });
 
     //js bundle
-    bundleApp();
+    bundleJs();
     //sass files
     gulp.watch(app_paths.sass + "*.scss", buildSass);
     //html files
@@ -188,9 +190,7 @@ function bundleHandleBars() {
  */
 function buildApp() {
 
-    //TODO: multiple files (test glob src input)
     let file_name = "index";
-
     gutil.log(gutil.colors.yellow("Building " + app_paths.root + file_name + ".html"));
 
     return gulp.src(app_paths.root + file_name + ".html")
