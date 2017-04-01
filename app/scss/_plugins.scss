@@ -1,0 +1,29 @@
+/**
+ * Plugins SCSS
+ */
+
+// Custom autofills chrome
+@-webkit-keyframes autofill {
+    to {
+		color: white;
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+// ++ Vue Transitions
+
+.fade-enter-active {
+ 	transition: opacity .4s ease;
+}
+.fade-leave-active {
+ 	transition: all .4s ease;
+	opacity: 0.4;
+}
+.fade-enter, .fade-leave-to {
+ 	opacity: 0;
+}

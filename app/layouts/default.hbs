@@ -8,16 +8,16 @@
 	<meta name="description" content="" /> --}}
 	<meta name="robots" content="index,follow" />
 
-	<title>Static Webapp</title>
+	<title>Vue webapp</title>
 
 	<link rel="icon" type="image/png" href="images/favicons/favicon.png" />
 	<link rel="apple-touch-icon" href="images/favicons/apple-touch-icon.png" />
 
 	{{! mobile metas }}
-	<meta name="application-name" content="Static Webapp" />
+	<meta name="application-name" content="Vue webapp" />
 	<meta name="mobile-web-app-capable" content="yes" />
 
-	<meta name="apple-mobile-web-app-title" content="Static Webapp" />
+	<meta name="apple-mobile-web-app-title" content="Vue webapp" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
@@ -31,16 +31,7 @@
 </head>
 <body>
 
-	{{! app wrapper }}
-	<div id="app">
-
-		{{> header }}
-
-        {{> body }}
-
-		{{> footer }}
-
-	</div>
+	{{> body }}
 
 	<!-- build:js assets/app.min.js -->
 	<script type="text/javascript" src="assets/app.js"></script>

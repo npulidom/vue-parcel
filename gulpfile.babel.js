@@ -2,22 +2,22 @@
  *	Gulp App Builder Task Runner
  */
 
-//import libs
 import gulp       from "gulp";
+import browser    from "browser-sync";
 import browserify from "browserify";
 import babelify   from "babelify";
-import source     from "vinyl-source-stream";
 import buffer     from "vinyl-buffer";
-import watchify   from "watchify";
+import source     from "vinyl-source-stream";
 import assign     from "lodash.assign";
 import cprocess   from "child_process";
 import bourbon    from "node-bourbon";
 import panini     from "panini";
 import importer   from "sass-importer-npm";
-import browser    from "browser-sync";
-//plugins
+import watchify   from "watchify";
+import vueify     from "vueify";
+import hmr        from "browserify-hmr";
+//gulp plugins
 import gutil         from "gulp-util";
-import chmod         from "gulp-chmod";
 import rename        from "gulp-rename";
 import autoprefixer  from "gulp-autoprefixer";
 import sass          from "gulp-sass";
@@ -27,16 +27,20 @@ import rev           from "gulp-rev";
 import uglify        from "gulp-uglify";
 import usemin        from "gulp-usemin";
 import sourcemaps    from "gulp-sourcemaps";
+import stripdebug 	 from "gulp-strip-debug";
 
 /* Consts */
 
-//sass paths
-const sass_app_libs = [
-    //bourbon path
-    bourbon.includePaths,
-    //family.scss
-    "./node_modules/family.scss/source/src/",
-];
+//sass app conf
+const sass_app_conf = {
+    importer     : importer,
+    includePaths : [
+        //bourbon path
+        bourbon.includePaths,
+        //family.scss
+        "./node_modules/family.scss/source/src/"
+    ]
+};
 
 //app paths
 const app_paths = {
@@ -47,9 +51,9 @@ const app_paths = {
     images : "./app/images/",
     fonts  : "./app/fonts/",
     //htmls
-    partials : "./app/partials",
+    layouts  : "./app/layouts",
     helpers  : "./app/helpers",
-    layouts  : "./app/layouts"
+    partials : "./app/partials"
 };
 
 // set up the browserify instance on a task basis
@@ -71,6 +75,10 @@ var b = browserify(browserify_opts)
         .transform(babelify, {
             presets : ["es2015"],
             ignore  : "./packages/"
+        })
+        //vueify
+        .transform(vueify, {
+            sass : sass_app_conf
         });
 
 /** Tasks. TODO: implement gulp.series() v 4.x **/
@@ -81,8 +89,6 @@ gulp.task("build", ["prod-node-env", "bundle-html", "build-app", "copy-resources
 gulp.task("watch", watchApp);
 //default
 gulp.task("default", ["watch"]);
-
-/* sub tasks */
 //bundle html
 gulp.task("bundle-html", bundleHandleBars);
 //build app
@@ -90,10 +96,7 @@ gulp.task("build-app", buildApp);
 //copy resources
 gulp.task("copy-resources", copyResources);
 //set node env to produtction
-gulp.task("prod-node-env", function() { 
-
-    return process.env.NODE_ENV = "production";
-});
+gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; });
 
 /**
  * Bundle JS package with Browserify
@@ -107,8 +110,7 @@ function bundleApp() {
             .pipe(buffer())
             //prepend contents
             //.pipe(insert.prepend(fs.readFileSync(app_paths.webpack, "utf-8")))
-            .pipe(gulp.dest(app_paths.assets))
-            .pipe(browserSync.stream());
+            .pipe(gulp.dest(app_paths.assets));
 }
 
 /**
@@ -119,8 +121,10 @@ function watchApp() {
     //setup
     b.on("update", bundleApp); //on any dep update, runs the bundler
     b.on("log", gutil.log);    //output build logs for watchify
+    //plugins
+    b.plugin(hmr);
 
-    gutil.log(gutil.colors.green("Watching Scss, Js and Volt source files changes..."));
+    gutil.log(gutil.colors.green("HMR Ready!"));
 
     //browser sync server
     browserSync.init({
@@ -145,13 +149,10 @@ function buildSass() {
     return gulp.src(app_paths.sass + "[^_]*.scss")
             .pipe(sourcemaps.init())
             //sass
-            .pipe(sass({ 
-                includePaths : sass_app_libs,
-                importer     : importer 
-            }).on("error", sass.logError))
+            .pipe(sass(sass_app_conf).on("error", sass.logError))
             //autoprefixer
             .pipe(autoprefixer({
-                browsers : ["last 4 versions"],
+                browsers : ["last 5 versions"],
                 cascade  : false
             }))
             .pipe(sourcemaps.write())
@@ -172,8 +173,8 @@ function bundleHandleBars() {
             .pipe(panini({
                 root     : app_paths.root,
                 layouts  : app_paths.layouts,
-                partials : app_paths.partials,
-                helpers  : app_paths.helpers
+                helpers  : app_paths.helpers,
+                //partials : app_paths.partials,
                 //data : "some-file.json"
             }))
             //rename
@@ -190,16 +191,15 @@ function buildApp() {
     //TODO: multiple files (test glob src input)
     let file_name = "index";
 
-    gutil.log(gutil.colors.yellow("Procesing file " + app_paths.root + file_name + ".html"));
+    gutil.log(gutil.colors.yellow("Building " + app_paths.root + file_name + ".html"));
 
     return gulp.src(app_paths.root + file_name + ".html")
                 //minify + rev
                 .pipe(usemin({
                     css  : [css_minifier(), rev],
-                    js   : [uglify(), rev],
+                    js   : [uglify(), stripdebug(), rev],
                     html : [html_minifier({ collapseWhitespace : true })]
                 }))
-                .pipe(chmod(755))
                 .pipe(gulp.dest("./dist/"));
 }
 

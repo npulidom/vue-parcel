@@ -11,8 +11,8 @@ import "js-cookie";
 import "jquery";
 import "velocity";
 
-// TODO: bind gulp (node) environment.
-if(typeof ENV !== "undefined" && ENV === "production") {
+// Release
+if(typeof module == "undefined") {
 
     Vue.config.silent        = true;
     Vue.config.devtools      = false;
@@ -25,8 +25,6 @@ import fastclick from "fastclick";
 fastclick(document.body);
 
 // app core
-import core from "./src/core.js";
+import main from "./modules/main.js";
 // init
-core.init();
-// register global
-window.core = core;
+main.init();

@@ -4,12 +4,20 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-	<title>Static Webapp</title>
+	<meta name="robots" content="index,follow" />
+
+	<title>Vue webapp</title>
 
 	<link rel="icon" type="image/png" href="images/favicons/favicon.png" />
 	<link rel="apple-touch-icon" href="images/favicons/apple-touch-icon.png" />
 
-	<meta name="application-name" content="Static Webapp" />
+	<meta name="application-name" content="Vue webapp" />
+	<meta name="mobile-web-app-capable" content="yes" />
+
+	<meta name="apple-mobile-web-app-title" content="Vue webapp" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
     <meta name="msapplication-TileColor" content="#efefef" />
     <meta name="msapplication-TileImage" content="images/favicons/mstile.png" />
 
@@ -21,28 +29,13 @@
 <body>
 
 	<div id="app">
-
-		<header>
-		    The Header
-		</header>
-		
-
-        <div>
-        
-        	<ul>
-        		<li>FontAwesome: <i class="fa fa-check-square"></i></li>
-                <li>Vue 2: <span v-text="message" :style="style"></span></li>
-        	</ul>
-        
-        </div>
-        
-
-		<footer>
-		    The footer
-		</footer>
-		
-
+	
+		<transition name="fade" mode="out-in" :duration="{ enter: 300, leave: 300 }" appear>
+			<router-view></router-view>
+		</transition>
+	
 	</div>
+	
 
 	<!-- build:js assets/app.min.js -->
 	<script type="text/javascript" src="assets/app.js"></script>

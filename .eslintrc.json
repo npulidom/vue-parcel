@@ -1,5 +1,6 @@
 {
     "extends": "eslint:recommended",
+	"plugins" : ["vue"],
     "env": {
         "browser" : true,
         "node"    : true,

@@ -1,9 +1,8 @@
-{{! index wrapper }}
-<div>
+{{! app wrapper }}
+<div id="app">
 
-	<ul>
-		<li>FontAwesome: <i class="fa fa-check-square"></i></li>
-        <li>Vue 2: <span v-text="message" :style="style"></span></li>
-	</ul>
+	<transition name="fade" mode="out-in" :duration="{ enter: 300, leave: 300 }" appear>
+		<router-view></router-view>
+	</transition>
 
 </div>

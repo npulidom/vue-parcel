@@ -1,35 +1,24 @@
 /**
- * Main Layout
- */
+* Main Layout
+*/
 
 html {
-    height: 100%;
-}
-
-html, body {
-  background: #222;
+    background: #222;
+	height: 100%;
 }
 
 body {
-    height: 100%;
-    font-family: $primary-font;
-    font-size: 16px;
+	height: auto;
+	min-height: 100%;
+	overflow-x: hidden;
+	background: #ccc;
+	font-family: $primary-font;
+	font-size: 16px;
 }
 
 div#app {
-    height: 100%;
-    padding: 60px;
-    color: #fff;
-}
-
-header {
-    color: lighten(rgb(134, 3, 129), 10%);
-    padding-bottom: 20px;
-}
-
-footer {
-    color: darken(rgb(196, 0, 71), 5%);
-    padding-top: 20px;
+	padding: 60px;
+	color: #fff;
 }
 
 //no-script fallback (uses classes fixed and center)
