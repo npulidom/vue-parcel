@@ -37,7 +37,6 @@
     "gulp-uglify": "^2.1.2",
     "gulp-usemin": "^0.3.28",
     "gulp-util": "^3.0.8",
-    "lodash.assign": "^4.0.9",
     "panini": "^1.4.0",
     "sass-importer-npm": "^1.0.2",
     "vinyl-buffer": "^1.0.0",

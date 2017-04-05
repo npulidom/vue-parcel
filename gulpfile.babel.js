@@ -5,17 +5,16 @@
 import gulp       from "gulp";
 import browser    from "browser-sync";
 import browserify from "browserify";
+import hmr        from "browserify-hmr";
 import babelify   from "babelify";
 import buffer     from "vinyl-buffer";
 import source     from "vinyl-source-stream";
-import assign     from "lodash.assign";
 import cprocess   from "child_process";
 import bourbon    from "node-bourbon";
 import panini     from "panini";
 import importer   from "sass-importer-npm";
 import watchify   from "watchify";
 import vueify     from "vueify";
-import hmr        from "browserify-hmr";
 //gulp plugins
 import gutil         from "gulp-util";
 import rename        from "gulp-rename";
@@ -57,12 +56,11 @@ const app_paths = {
 };
 
 // set up the browserify instance on a task basis
-const browserify_opts = assign({}, watchify.args, {
+const browserify_opts = {
     entries      : [app_paths.js + "app.js"],
     cache        : {},
-    packageCache : {},
-    plugin       : [watchify]
-});
+    packageCache : {}
+};
 
 //browsert sync conf
 var browserSync = browser.create();
@@ -108,8 +106,9 @@ function watchApp() {
     b.on("log", gutil.log);    //output build logs for watchify
     //plugins
     b.plugin(hmr);
+    b.plugin(watchify);
 
-    gutil.log(gutil.colors.green("HMR Ready!"));
+    gutil.log(gutil.colors.green("Watcher Ready!"));
 
     //browser sync server
     browserSync.init({
@@ -215,7 +214,7 @@ function copyResources() {
 }
 
 function exit() {
-    
+
     gutil.log(gutil.colors.green("All tasks complete"));
     setTimeout(() => { process.exit() }, 1000);
 }
