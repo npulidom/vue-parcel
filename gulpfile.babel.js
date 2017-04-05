@@ -84,36 +84,19 @@ var b = browserify(browserify_opts)
 /** Tasks. TODO: implement gulp.series() v 4.x **/
 
 //build & deploy
-gulp.task("build", ["prod-node-env", "bundle-js", "bundle-html", "build-app", "copy-resources"]);
+gulp.task("build", ["prod-node-env", "bundle-scss", "bundle-js", "bundle-hbs", "build-app", "copy-resources"], exit);
 //watch
 gulp.task("watch", watchApp);
 //default
-gulp.task("default", ["watch"]);
-//bundle js
-gulp.task("bundle-js", bundleHandleBars);
-//bundle html
-gulp.task("bundle-html", bundleHandleBars);
-//build app
+gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")); });
+//build tasks
+gulp.task("bundle-scss", bundleScss);
+gulp.task("bundle-js", bundleJs);
+gulp.task("bundle-hbs", bundleHbs);
 gulp.task("build-app", buildApp);
-//copy resources
 gulp.task("copy-resources", copyResources);
 //set node env to produtction
 gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; });
-
-/**
- * Bundle JS package with Browserify
- */
-function bundleJs() {
-
-    //browserify js bundler
-    return b.bundle()
-            .on("error", gutil.log.bind(gutil, "Browserify Error"))
-            .pipe(source("app.js"))
-            .pipe(buffer())
-            //prepend contents
-            //.pipe(insert.prepend(fs.readFileSync(app_paths.webpack, "utf-8")))
-            .pipe(gulp.dest(app_paths.assets));
-}
 
 /**
  * Watch App
@@ -138,15 +121,15 @@ function watchApp() {
     //js bundle
     bundleJs();
     //sass files
-    gulp.watch(app_paths.sass + "*.scss", buildSass);
+    gulp.watch(app_paths.sass + "*.scss", bundleScss);
     //html files
-    gulp.watch([app_paths.root + "*.hbs", app_paths.root + "**/*.hbs"], bundleHandleBars);
+    gulp.watch([app_paths.root + "*.hbs", app_paths.root + "**/*.hbs"], bundleHbs);
 }
 
 /**
- * Sass builder
+ * Sass bundler
  */
-function buildSass() {
+function bundleScss() {
 
     return gulp.src(app_paths.sass + "[^_]*.scss")
             .pipe(sourcemaps.init())
@@ -163,9 +146,23 @@ function buildSass() {
 }
 
 /**
- * Panini Bundle
+ * Bundle JS package with Browserify
  */
-function bundleHandleBars() {
+function bundleJs() {
+
+    return b.bundle()
+            .on("error", gutil.log.bind(gutil, "Browserify Error"))
+            .pipe(source("app.js"))
+            .pipe(buffer())
+            //prepend contents
+            //.pipe(insert.prepend(fs.readFileSync(app_paths.webpack, "utf-8")))
+            .pipe(gulp.dest(app_paths.assets));
+}
+
+/**
+ * Panini Bundler
+ */
+function bundleHbs() {
 
     //rerfresh panini
     panini.refresh();
@@ -194,13 +191,13 @@ function buildApp() {
     gutil.log(gutil.colors.yellow("Building " + app_paths.root + file_name + ".html"));
 
     return gulp.src(app_paths.root + file_name + ".html")
-                //minify + rev
-                .pipe(usemin({
-                    css  : [css_minifier(), rev],
-                    js   : [uglify(), stripdebug(), rev],
-                    html : [html_minifier({ collapseWhitespace : true })]
-                }))
-                .pipe(gulp.dest("./dist/"));
+        //minify + rev
+        .pipe(usemin({
+            css  : [css_minifier(), rev],
+            js   : [uglify(), stripdebug(), rev],
+            html : [html_minifier({ collapseWhitespace : true })]
+        }))
+        .pipe(gulp.dest("./dist/"));
 }
 
 /**
@@ -215,4 +212,10 @@ function copyResources() {
     //fonts
     cprocess.exec("mkdir -p dist/fonts");
     cprocess.exec("cp -R app/fonts/ dist/fonts/");
+}
+
+function exit() {
+    
+    gutil.log(gutil.colors.green("All tasks complete"));
+    setTimeout(() => { process.exit() }, 1000);
 }
