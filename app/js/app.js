@@ -12,7 +12,7 @@ import "jquery";
 import "velocity";
 
 // Release
-if(typeof module == "undefined") {
+if(typeof module.hot == "undefined") {
 
     Vue.config.silent        = true;
     Vue.config.devtools      = false;
