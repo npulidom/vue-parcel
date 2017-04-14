@@ -10,7 +10,6 @@ import loader from "./loader.js";
 export default {
     // module props
     name : "main",
-    vm   : null,
     // initializer
     init() {
 
