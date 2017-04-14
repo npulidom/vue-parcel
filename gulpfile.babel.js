@@ -72,7 +72,7 @@ var b = browserify(browserify_opts)
         //es6
         .transform(babelify, {
             presets : ["es2015"],
-            ignore  : "./packages/"
+            //ignore  : ""
         })
         //vueify
         .transform(vueify, {
