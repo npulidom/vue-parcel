@@ -216,5 +216,5 @@ function copyResources() {
 function exit() {
 
     gutil.log(gutil.colors.green("All tasks complete"));
-    setTimeout(() => { process.exit() }, 1000);
+    setTimeout(() => { process.exit(); }, 1000);
 }
