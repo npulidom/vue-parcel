@@ -12,7 +12,7 @@
 	<div class="home">
 		<p> <i class="fa fa-thumbs-o-up"></i> {{ home_text }} </p>
 		<router-link to="/section">
-			 Go to Section
+			Go to Section
 		</router-link>
 	</div>
 </template>

@@ -12,7 +12,7 @@
 	<div class="section">
 		<p> <i class="fa fa-thumbs-o-up"></i> {{ section_text }} </p>
 		<router-link to="/">
-			 Go to Home
+			Go to Home
 		</router-link>
 	</div>
 </template>
