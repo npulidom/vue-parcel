@@ -7,7 +7,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.scss]
+[*.{scss,json,yml}]
 indent_size = 2
 
 [*.{js,vue,hbs,html}]
