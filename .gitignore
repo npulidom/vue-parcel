@@ -1,6 +1,7 @@
 # Linux & OSX
 *~
 .DS_Store
+*.log
 
 # Build & Packages
 node_modules
