@@ -44,7 +44,8 @@
     "vue": "^2.2.6",
     "vue-template-compiler": "^2.2.6",
     "vueify": "^9.4.0",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "yargs": "^7.1.0"
   },
   "dependencies": {
     "basscss-sass": "^4.0.0",

@@ -15,6 +15,7 @@ import panini     from "panini";
 import importer   from "sass-importer-npm";
 import watchify   from "watchify";
 import vueify     from "vueify";
+import yargs      from "yargs";
 //gulp plugins
 import gutil         from "gulp-util";
 import rename        from "gulp-rename";
@@ -46,13 +47,10 @@ const app_paths = {
     root   : "./app/",
     js     : "./app/js/",
     sass   : "./app/scss/",
+    hbs    : "./app/hbs/",
     assets : "./app/assets/",
     images : "./app/images/",
-    fonts  : "./app/fonts/",
-    //htmls
-    layouts  : "./app/layouts",
-    helpers  : "./app/helpers",
-    partials : "./app/partials"
+    fonts  : "./app/fonts/"
 };
 
 // set up the browserify instance on a task basis
@@ -121,14 +119,16 @@ function watchApp() {
     bundleJs();
     //sass files
     gulp.watch(app_paths.sass + "*.scss", bundleScss);
-    //html files
-    gulp.watch([app_paths.root + "*.hbs", app_paths.root + "**/*.hbs"], bundleHbs);
+    //hbs files
+    gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs);
 }
 
 /**
  * Sass bundler
  */
 function bundleScss() {
+
+    gutil.log(gutil.colors.yellow("Bundling SCSS files..."));
 
     return gulp.src(app_paths.sass + "[^_]*.scss")
             .pipe(sourcemaps.init())
@@ -149,6 +149,8 @@ function bundleScss() {
  */
 function bundleJs() {
 
+    gutil.log(gutil.colors.yellow("Bundling JS files..."));
+
     return b.bundle()
             .on("error", gutil.log.bind(gutil, "Browserify Error"))
             .pipe(source("app.js"))
@@ -163,16 +165,17 @@ function bundleJs() {
  */
 function bundleHbs() {
 
+    gutil.log(gutil.colors.yellow("Building HBS files..."));
+
     //rerfresh panini
     panini.refresh();
 
-    return gulp.src(app_paths.root + "*.hbs")
+    return gulp.src(app_paths.hbs + "*.hbs")
             //panini + handlebars
             .pipe(panini({
-                root     : app_paths.root,
-                layouts  : app_paths.layouts,
-                helpers  : app_paths.helpers,
-                //partials : app_paths.partials,
+                root     : app_paths.hbs,
+                layouts  : app_paths.hbs + "layouts",
+                //partials : app_paths.hbs + "partials",
                 //data : "some-file.json"
             }))
             //rename
@@ -186,10 +189,12 @@ function bundleHbs() {
  */
 function buildApp() {
 
-    let file_name = "index";
-    gutil.log(gutil.colors.yellow("Building " + app_paths.root + file_name + ".html"));
+    let file = typeof yargs.argv.file != "undefined" ? yargs.argv.file : "index";
+    file = file.replace(".html", "");
 
-    return gulp.src(app_paths.root + file_name + ".html")
+    gutil.log(gutil.colors.yellow("Building file "+ file + ".html ..."));
+
+    return gulp.src(app_paths.root + file + ".html")
         //minify + rev
         .pipe(usemin({
             css  : [css_minifier(), rev],
