@@ -115,12 +115,23 @@ function watchApp() {
         }
     });
 
+    //html bundle
+    bundleHbs();
     //js bundle
     bundleJs();
     //sass files
     gulp.watch(app_paths.sass + "*.scss", bundleScss);
     //hbs files
     gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs);
+
+    // bundle sass
+    setTimeout(() => {
+        bundleScss();
+        gutil.log(gutil.colors.green("Watcher ready, listening..."));
+    }, 12000);
+
+    //force hmr save
+    setTimeout(() => { bundleJs(); }, 10000);
 }
 
 /**
