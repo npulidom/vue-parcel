@@ -83,15 +83,15 @@ var b = browserify(browserify_opts)
 gulp.task("build", ["prod-node-env", "bundle-scss", "bundle-js", "bundle-hbs", "build-app", "copy-resources"], exit);
 //watch
 gulp.task("watch", watchApp);
-//default
-gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")); });
 //build tasks
 gulp.task("bundle-scss", bundleScss);
 gulp.task("bundle-js", bundleJs);
 gulp.task("bundle-hbs", bundleHbs);
 gulp.task("build-app", buildApp);
 gulp.task("copy-resources", copyResources);
-//set node env to produtction
+//default
+gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")); });
+//set node env to production
 gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; });
 
 /**
