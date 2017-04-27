@@ -6,8 +6,6 @@
   "license": "Unlicense",
   "main": "README.md",
   "scripts": {
-    "setup": "npm install -g gulp npm-check && npm install",
-    "update": "npm-check -u && npm prune",
     "watch": "gulp watch",
     "build": "gulp build",
     "clean": "rm -rf dist"

@@ -50,16 +50,6 @@ Simple scaffolding project for building static SPA's with Vue Js.
 
 ## Usage
 
-Initial setup, installs global & local npm dependencies (first time only).
-```
-npm run setup
-```
-
-Check for npm dependencies updates.
-```
-npm run update
-```
-
 Watch **scss**, **js** or **hbs** files (gulp watch)
 ```
 npm run watch
