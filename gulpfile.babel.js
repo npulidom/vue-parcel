@@ -100,8 +100,8 @@ gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; }
 function watchApp() {
 
     //setup
+    b.on("log", gutil.log);   //output build logs for watchify
     b.on("update", bundleJs); //on any dep update, runs the bundler
-    b.on("log", gutil.log);    //output build logs for watchify
     //plugins
     b.plugin(hmr);
     b.plugin(watchify);
