@@ -69,3 +69,8 @@ Build app for distribution (gulp build)
 ```
 npm run build
 ```
+
+Clean distribution folder
+```
+npm run clean
+```

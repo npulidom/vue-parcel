@@ -9,7 +9,8 @@
     "setup": "npm install -g gulp npm-check && npm install",
     "update": "npm-check -u && npm prune",
     "watch": "gulp watch",
-    "build": "rm -rf dist && gulp build"
+    "build": "gulp build",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
