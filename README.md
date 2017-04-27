@@ -46,7 +46,6 @@ Simple scaffolding project for building static SPA's with Vue Js.
 
 - NodeJs >= 4.
 - Npm >= 3.
-- Npm global packages: **gulp**, **npm-check**.
 
 ## Usage
 
