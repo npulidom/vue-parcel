@@ -8,10 +8,10 @@ import VueRouter from "vue-router";
 import loader from "./loader.js";
 
 export default {
-    // module props
-    name : "main",
-    // initializer
-    init() {
+	// module props
+	name : "main",
+	// initializer
+	init() {
 
 		//new router
 		const router = new VueRouter({
@@ -35,5 +35,5 @@ export default {
 		})
 		//mount app
 		.$mount("#app");
-    }
+	}
 };

@@ -14,9 +14,9 @@ import "velocity";
 // Release
 if(typeof module.hot == "undefined") {
 
-    Vue.config.silent        = true;
-    Vue.config.devtools      = false;
-    Vue.config.productionTip = false;
+	Vue.config.silent        = true;
+	Vue.config.devtools      = false;
+	Vue.config.productionTip = false;
 }
 
 // FastClick init

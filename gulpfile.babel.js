@@ -33,31 +33,31 @@ import stripdebug    from "gulp-strip-debug";
 
 //sass app conf
 const sass_app_conf = {
-    importer     : importer,
-    includePaths : [
-        //bourbon path
-        bourbon.includePaths,
-        //family.scss
-        "./node_modules/family.scss/source/src/"
-    ]
+	importer     : importer,
+	includePaths : [
+		//bourbon path
+		bourbon.includePaths,
+		//family.scss
+		"./node_modules/family.scss/source/src/"
+	]
 };
 
 //app paths
 const app_paths = {
-    root   : "./app/",
-    js     : "./app/js/",
-    sass   : "./app/scss/",
-    hbs    : "./app/hbs/",
-    assets : "./app/assets/",
-    images : "./app/images/",
-    fonts  : "./app/fonts/"
+	root   : "./app/",
+	js     : "./app/js/",
+	sass   : "./app/scss/",
+	hbs    : "./app/hbs/",
+	assets : "./app/assets/",
+	images : "./app/images/",
+	fonts  : "./app/fonts/"
 };
 
 // set up the browserify instance on a task basis
 const browserify_opts = {
-    entries      : [app_paths.js + "app.js"],
-    cache        : {},
-    packageCache : {}
+	entries      : [app_paths.js + "app.js"],
+	cache        : {},
+	packageCache : {}
 };
 
 //browsert sync conf
@@ -67,15 +67,15 @@ var browserSync = browser.create();
 
 //browserify object with transforms
 var b = browserify(browserify_opts)
-        //es6
-        .transform(babelify, {
-            presets : ["es2015"],
-            //ignore  : ""
-        })
-        //vueify
-        .transform(vueify, {
-            sass : sass_app_conf
-        });
+		//es6
+		.transform(babelify, {
+			presets : ["es2015"],
+			//ignore  : ""
+		})
+		//vueify
+		.transform(vueify, {
+			sass : sass_app_conf
+		});
 
 /** Tasks. TODO: implement gulp.series() v 4.x **/
 
@@ -99,39 +99,39 @@ gulp.task("prod-node-env", () => { return process.env.NODE_ENV = "production"; }
  */
 function watchApp() {
 
-    //setup
-    b.on("log", gutil.log);   //output build logs for watchify
-    b.on("update", bundleJs); //on any dep update, runs the bundler
-    //plugins
-    b.plugin(hmr);
-    b.plugin(watchify);
+	//setup
+	b.on("log", gutil.log);   //output build logs for watchify
+	b.on("update", bundleJs); //on any dep update, runs the bundler
+	//plugins
+	b.plugin(hmr);
+	b.plugin(watchify);
 
-    gutil.log(gutil.colors.green("Watcher Ready!"));
+	gutil.log(gutil.colors.green("Watcher Ready!"));
 
-    //browser sync server
-    browserSync.init({
-        server: {
-            baseDir: app_paths.root
-        }
-    });
+	//browser sync server
+	browserSync.init({
+		server: {
+			baseDir: app_paths.root
+		}
+	});
 
-    //html bundle
-    bundleHbs();
-    //js bundle
-    bundleJs();
-    //sass files
-    gulp.watch(app_paths.sass + "*.scss", bundleScss);
-    //hbs files
-    gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs);
+	//html bundle
+	bundleHbs();
+	//js bundle
+	bundleJs();
+	//sass files
+	gulp.watch(app_paths.sass + "*.scss", bundleScss);
+	//hbs files
+	gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs);
 
-    // bundle sass
-    setTimeout(() => {
-        bundleScss();
-        gutil.log(gutil.colors.green("Watcher ready, listening..."));
-    }, 12000);
+	// bundle sass
+	setTimeout(() => {
+		bundleScss();
+		gutil.log(gutil.colors.green("Watcher ready, listening..."));
+	}, 12000);
 
-    //force hmr save
-    setTimeout(() => { bundleJs(); }, 10000);
+	//force hmr save
+	setTimeout(() => { bundleJs(); }, 10000);
 }
 
 /**
@@ -139,20 +139,20 @@ function watchApp() {
  */
 function bundleScss() {
 
-    gutil.log(gutil.colors.yellow("Bundling SCSS files..."));
+	gutil.log(gutil.colors.yellow("Bundling SCSS files..."));
 
-    return gulp.src(app_paths.sass + "[^_]*.scss")
-            .pipe(sourcemaps.init())
-            //sass
-            .pipe(sass(sass_app_conf).on("error", sass.logError))
-            //autoprefixer
-            .pipe(autoprefixer({
-                browsers : ["last 5 versions"],
-                cascade  : false
-            }))
-            .pipe(sourcemaps.write())
-            .pipe(gulp.dest(app_paths.assets))
-            .pipe(browserSync.stream());
+	return gulp.src(app_paths.sass + "[^_]*.scss")
+			.pipe(sourcemaps.init())
+			//sass
+			.pipe(sass(sass_app_conf).on("error", sass.logError))
+			//autoprefixer
+			.pipe(autoprefixer({
+				browsers : ["last 5 versions"],
+				cascade  : false
+			}))
+			.pipe(sourcemaps.write())
+			.pipe(gulp.dest(app_paths.assets))
+			.pipe(browserSync.stream());
 }
 
 /**
@@ -160,15 +160,15 @@ function bundleScss() {
  */
 function bundleJs() {
 
-    gutil.log(gutil.colors.yellow("Bundling JS files..."));
+	gutil.log(gutil.colors.yellow("Bundling JS files..."));
 
-    return b.bundle()
-            .on("error", gutil.log.bind(gutil, "Browserify Error"))
-            .pipe(source("app.js"))
-            .pipe(buffer())
-            //prepend contents
-            //.pipe(insert.prepend(fs.readFileSync(app_paths.webpack, "utf-8")))
-            .pipe(gulp.dest(app_paths.assets));
+	return b.bundle()
+			.on("error", gutil.log.bind(gutil, "Browserify Error"))
+			.pipe(source("app.js"))
+			.pipe(buffer())
+			//prepend contents
+			//.pipe(insert.prepend(fs.readFileSync(app_paths.webpack, "utf-8")))
+			.pipe(gulp.dest(app_paths.assets));
 }
 
 /**
@@ -176,23 +176,23 @@ function bundleJs() {
  */
 function bundleHbs() {
 
-    gutil.log(gutil.colors.yellow("Building HBS files..."));
+	gutil.log(gutil.colors.yellow("Building HBS files..."));
 
-    //rerfresh panini
-    panini.refresh();
+	//rerfresh panini
+	panini.refresh();
 
-    return gulp.src(app_paths.hbs + "*.hbs")
-            //panini + handlebars
-            .pipe(panini({
-                root     : app_paths.hbs,
-                layouts  : app_paths.hbs + "layouts",
-                //partials : app_paths.hbs + "partials",
-                //data : "some-file.json"
-            }))
-            //rename
-            .pipe(rename({ extname : ".html" }))
-            .pipe(gulp.dest(app_paths.root))
-            .pipe(browserSync.stream());
+	return gulp.src(app_paths.hbs + "*.hbs")
+			//panini + handlebars
+			.pipe(panini({
+				root     : app_paths.hbs,
+				layouts  : app_paths.hbs + "layouts",
+				//partials : app_paths.hbs + "partials",
+				//data : "some-file.json"
+			}))
+			//rename
+			.pipe(rename({ extname : ".html" }))
+			.pipe(gulp.dest(app_paths.root))
+			.pipe(browserSync.stream());
 }
 
 /**
@@ -200,19 +200,19 @@ function bundleHbs() {
  */
 function buildApp() {
 
-    let file = typeof yargs.argv.file != "undefined" ? yargs.argv.file : "index";
-    file = file.replace(".html", "");
+	let file = typeof yargs.argv.file != "undefined" ? yargs.argv.file : "index";
+	file = file.replace(".html", "");
 
-    gutil.log(gutil.colors.yellow("Building file "+ file + ".html ..."));
+	gutil.log(gutil.colors.yellow("Building file "+ file + ".html ..."));
 
-    return gulp.src(app_paths.root + file + ".html")
-        //minify + rev
-        .pipe(usemin({
-            css  : [css_minifier(), rev],
-            js   : [uglify(), stripdebug(), rev],
-            html : [html_minifier({ collapseWhitespace : true })]
-        }))
-        .pipe(gulp.dest("./dist/"));
+	return gulp.src(app_paths.root + file + ".html")
+		//minify + rev
+		.pipe(usemin({
+			css  : [css_minifier(), rev],
+			js   : [uglify(), stripdebug(), rev],
+			html : [html_minifier({ collapseWhitespace : true })]
+		}))
+		.pipe(gulp.dest("./dist/"));
 }
 
 /**
@@ -220,17 +220,17 @@ function buildApp() {
  */
 function copyResources() {
 
-    //images
-    cprocess.exec("mkdir -p dist/images");
-    cprocess.exec("cp -R app/images/ dist/images/");
+	//images
+	cprocess.exec("mkdir -p dist/images");
+	cprocess.exec("cp -R app/images/ dist/images/");
 
-    //fonts
-    cprocess.exec("mkdir -p dist/fonts");
-    cprocess.exec("cp -R app/fonts/ dist/fonts/");
+	//fonts
+	cprocess.exec("mkdir -p dist/fonts");
+	cprocess.exec("cp -R app/fonts/ dist/fonts/");
 }
 
 function exit() {
 
-    gutil.log(gutil.colors.green("All tasks complete"));
-    setTimeout(() => { process.exit(); }, 1000);
+	gutil.log(gutil.colors.green("All tasks complete"));
+	setTimeout(() => { process.exit(); }, 1000);
 }
