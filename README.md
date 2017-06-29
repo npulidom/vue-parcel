@@ -49,17 +49,12 @@ Simple scaffolding project for building static SPA's with Vue Js.
 
 ## Usage
 
-Watch **scss**, **js** or **hbs** files (gulp watch)
+Watch **scss**, **js** or **hbs** files (watchify)
 ```
 npm run watch
 ```
 
-Build app for distribution (gulp build)
+Build app for distribution (minified files with revision)
 ```
 npm run build
-```
-
-Clean distribution folder
-```
-npm run clean
 ```
