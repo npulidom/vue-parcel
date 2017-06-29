@@ -1,32 +1,32 @@
 {
-    "extends": "eslint:recommended",
+	"extends": "eslint:recommended",
 	"plugins" : ["vue"],
-    "env": {
-        "browser" : true,
-        "node"    : true,
-        "es6"     : true
-    },
-    "globals": {
-        "$"          : false,
-        "jQuery"     : false,
-        "_"          : false,
-        "Vue"        : false,
-        "FastClick"  : false,
-        "core"       : false
-    },
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "rules": {
-        "no-console": 0,
-        "no-mixed-spaces-and-tabs": 0,
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "semi": [
-            "warn",
-            "always"
-        ]
-    }
+	"env": {
+		"browser" : true,
+		"node"    : true,
+		"es6"     : true
+	},
+	"globals": {
+		"$"          : false,
+		"jQuery"     : false,
+		"_"          : false,
+		"Vue"        : false,
+		"FastClick"  : false,
+		"core"       : false
+	},
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-console": 0,
+		"no-mixed-spaces-and-tabs": 0,
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"semi": [
+			"warn",
+			"always"
+		]
+	}
 }
