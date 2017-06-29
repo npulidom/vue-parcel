@@ -3,7 +3,21 @@ Vue Static webapp
 
 [![GitHub version](https://badge.fury.io/gh/npulidom%2Fvue-webapp.svg)](https://badge.fury.io/gh/npulidom%2Fvue-webapp)
 
-Simple scaffolding project for building static SPA's with Vue Js.
+Scaffolding project for building static SPA's with Vue Js 2.
+
+## Features
+
+- ES6 Support (babelify)
+- JS Modules (browserify)
+- Hot Module Reload (browserify-hmr)
+- JS Linter: [eslint](http://eslint.org/)
+- BrowserSync: [site](https://www.browsersync.io/)
+- Sourcemaps
+
+## Dependencies
+
+- NodeJs >= 4.
+- Npm >= 3.
 
 ## Javascript
 
@@ -32,20 +46,6 @@ Simple scaffolding project for building static SPA's with Vue Js.
 
 - Handlebars: [site](http://handlebarsjs.com/)
 - Panini: [github](https://github.com/zurb/panini)
-
-## Features
-
-- ES6 Support (babelify)
-- JS Modules (browserify)
-- Hot Module Reload (browserify-hmr)
-- JS Linter: [eslint](http://eslint.org/)
-- BrowserSync: [site](https://www.browsersync.io/)
-- Sourcemaps
-
-## Dependencies
-
-- NodeJs >= 4.
-- Npm >= 3.
 
 ## Usage
 
