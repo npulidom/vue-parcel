@@ -1,0 +1,10 @@
+/**
+ * Fonts SCSS
+ */
+
+//google fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+//font awesome
+$fa-font-path: "../fonts/fontawesome/" !default;
+@import "font-awesome/scss/font-awesome";

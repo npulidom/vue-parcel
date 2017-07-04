@@ -1,6 +1,5 @@
 /**
  * App.js
- * Browserify can only analyze static requires.
  */
 
 import "html5shiv";
@@ -11,8 +10,10 @@ import "js-cookie";
 import "jquery";
 import "velocity";
 
+console.info("App -> Environment: " + process.env.NODE_ENV);
+
 // Release
-if(typeof module.hot == "undefined") {
+if(process.env.NODE_ENV == "production") {
 
 	Vue.config.silent        = true;
 	Vue.config.devtools      = false;

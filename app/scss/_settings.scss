@@ -4,16 +4,6 @@
 
 @import "sass-md-colors/colors/variables";
 
-//google fonts
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-//font awesome
-$fa-font-path: "../fonts/fontawesome/" !default;
-@import "font-awesome/scss/font-awesome";
-
-// include a local font
-//@include load-font("fontname", "fontname");
-
 //fonts
 $primary-font : "Montserrat", Arial, sans-serif;
 //colors

@@ -7,16 +7,17 @@
 @charset "utf-8";
 
 //libraries
-@import "family";
-@import "bourbon";
-@import "normalize";
+@import "libs";
 
-@import "utils";
+//settings
 @import "settings";
+//vendors
+@import "normalize-scss/sass/normalize";
 @import "basscss-sass/scss/basscss";
-@import "breakpoint-sass/stylesheets/breakpoint";
 
 //Partials
-@import "plugins";
+@import "fonts";
+@import "helpers";
 @import "layout";
+@import "plugins";
 @import "home";

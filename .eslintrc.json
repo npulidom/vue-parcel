@@ -7,12 +7,12 @@
 		"es6"     : true
 	},
 	"globals": {
-		"$"          : false,
-		"jQuery"     : false,
-		"_"          : false,
-		"Vue"        : false,
-		"FastClick"  : false,
-		"core"       : false
+		"$"         : false,
+		"jQuery"    : false,
+		"_"         : false,
+		"Vue"       : false,
+		"FastClick" : false,
+		"core"      : false
 	},
 	"parserOptions": {
 		"sourceType": "module"

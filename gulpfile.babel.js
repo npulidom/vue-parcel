@@ -1,6 +1,5 @@
 /**
  *  Gulp App Builder Task Runner
- *  requires gulp v3
  */
 
 import gulp         from "gulp";
@@ -62,7 +61,7 @@ const browserify_opts = {
 	entries      : [app_paths.js + "app.js"],
 	cache        : {},
 	packageCache : {},
-	consoleLogs  : true,
+	consoleLogs  : true
 };
 
 const autoprefixer_conf = {
@@ -114,16 +113,20 @@ gulp.task("prod-env", () => {
 /**
  * Set Browserify object
  */
-function setBrowserify(release = false, env = "development") {
+function setBrowserify(env = false, release = false) {
 
-	gutil.log(gutil.colors.magenta("Browserify env: "+env));
+	if(!env) {
+		gutil.log(gutil.colors.red("Browserify environment not defined!"));
+		return;
+	}
+
+	gutil.log(gutil.colors.magenta("Browserify env: " + env));
 
 	//browserify object with transforms
 	b = browserify(browserify_opts)
 		//es6
 		.transform(babelify, {
-			presets : ["es2015"],
-			//ignore  : "" //exclude
+			presets : ["es2015"]
 		})
 		//envify
 		.transform(envify, {
@@ -156,7 +159,7 @@ function setBrowserify(release = false, env = "development") {
  */
 function watchApp() {
 
-	setBrowserify();
+	setBrowserify(yargs.argv.env || "development");
 
 	//browser sync server
 	browserSync.init({
@@ -248,9 +251,7 @@ function bundleHbs() {
  */
 function minifyJs() {
 
-	let env = typeof yargs.argv.env != "undefined" ? yargs.argv.env : "production";
-
-	setBrowserify(true, env);
+	setBrowserify(yargs.argv.env || "production", true);
 
 	return bundleJs();
 }

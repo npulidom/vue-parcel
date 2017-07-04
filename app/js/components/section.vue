@@ -3,9 +3,12 @@
  */
 
 <style lang="scss">
-	div.section {
-		color: purple;
-	}
+
+@import "../../scss/libs";
+
+div.section {
+	color: purple;
+}
 </style>
 
 <template>

@@ -3,9 +3,12 @@
  */
 
 <style lang="scss">
-	div.home {
-		color: blue;
-	}
+
+@import "../../scss/libs";
+
+div.home {
+	color: blue;
+}
 </style>
 
 <template>

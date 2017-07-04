@@ -3,7 +3,7 @@
 */
 
 html {
-		background: #222;
+	background: #222;
 	height: 100%;
 }
 
@@ -19,6 +19,19 @@ body {
 div#app {
 	padding: 30px;
 	color: #fff;
+}
+
+// Custom autofills chrome
+@-webkit-keyframes autofill {
+	to {
+		color: white;
+		background: rgba(255, 255, 255, 0.2);
+	}
+}
+
+input:-webkit-autofill {
+	-webkit-animation-name: autofill;
+	-webkit-animation-fill-mode: both;
 }
 
 //no-script fallback (uses classes fixed and center)

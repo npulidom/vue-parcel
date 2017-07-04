@@ -7,19 +7,40 @@ Scaffolding project for building static SPA's with Vue Js 2.
 
 ## Features
 
-- ES6 Support (babelify)
-- JS Modules (browserify)
+- ES6 Modules (browserify + babelify)
 - Hot Module Reload (browserify-hmr)
 - JS Linter: [eslint](http://eslint.org/)
 - BrowserSync: [site](https://www.browsersync.io/)
+- CSS Autoprefixer (postcss)
 - Sourcemaps
 
 ## Dependencies
 
-- NodeJs >= 4.
-- Npm >= 3.
+- NodeJs >= 4.x
+- Npm >= 3.x
 
-## Javascript
+## Usage
+
+Watch task
+```
+gulp watch
+```
+
+Build task
+```
+gulp build
+```
+
+Use `--env` option to set custom environment.  
+This option will set `process.env.NODE_ENV` value.  
+Default values: **development** (watch), **production** (build). Example:
+```
+gulp watch --env staging
+```
+
+## Vendors
+
+### Javascript
 
 - Html5shiv: [github](https://github.com/aFarkas/html5shiv)
 - Lodash: [docs](https://lodash.com/docs)
@@ -32,7 +53,7 @@ Scaffolding project for building static SPA's with Vue Js 2.
 - Vuex 2: [github](https://github.com/vuejs/vuex)
 - Velocity Animation Engine: [site](https://julian.com/)
 
-## Sass
+### Sass
 
 - Bourbon: [docs](http://bourbon.io/docs/)
 - Family: [site](https://lukyvj.github.io/family.scss/)
@@ -42,19 +63,7 @@ Scaffolding project for building static SPA's with Vue Js 2.
 - Normalize: [site](https://necolas.github.io/normalize.css/)
 - Font Awesome: [site](http://fontawesome.io/)
 
-## HTML Template
+### HTML
 
 - Handlebars: [site](http://handlebarsjs.com/)
 - Panini: [github](https://github.com/zurb/panini)
-
-## Usage
-
-Watch **scss**, **js** or **hbs** files (watchify)
-```
-npm run watch
-```
-
-Build app for distribution (minified files with revision)
-```
-npm run build
-```
