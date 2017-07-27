@@ -3,7 +3,7 @@ Vue Static webapp
 
 [![GitHub version](https://badge.fury.io/gh/npulidom%2Fvue-webapp.svg)](https://badge.fury.io/gh/npulidom%2Fvue-webapp)
 
-Scaffolding project for building static SPA's with Vue Js 2.
+Scaffolding project for building static SPA's with VueJs 2.
 
 ## Features
 
