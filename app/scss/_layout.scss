@@ -2,6 +2,10 @@
 * Main Layout
 */
 
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
 html {
 	background: #222;
 	height: 100%;
