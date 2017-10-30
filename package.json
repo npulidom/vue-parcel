@@ -40,40 +40,30 @@
 		"yargs": "^7.1.0"
 	},
 	"dependencies": {
-		"basscss-sass": "^4.0.0",
-		"bluebird": "^3.5.0",
 		"breakpoint-sass": "^2.7.1",
 		"family.scss": "^1.0.8",
 		"fastclick": "^1.0.6",
 		"font-awesome": "^4.7.0",
 		"html5shiv": "^3.7.3",
 		"jquery": "^3.2.1",
-		"js-cookie": "^2.1.0",
 		"lodash": "^4.17.4",
-		"node-bourbon": "^4.2.8",
 		"normalize-scss": "^7.0.0",
 		"sass-md-colors": "^1.0.0",
-		"velocity-animate": "^1.5.0",
 		"vue-router": "^2.3.0",
 		"vuex": "^2.2.0",
 		"vue": "^2.2.6"
 	},
 	"browser": {
-		"bluebird": "./node_modules/bluebird/js/browser/bluebird.core.js",
 		"fastclick": "./node_modules/fastclick/lib/fastclick.js",
 		"html5shiv": "./node_modules/html5shiv/dist/html5shiv.js",
 		"jquery": "./node_modules/jquery/dist/jquery.js",
-		"js-cookie": "./node_modules/js-cookie/src/js.cookie.js",
 		"lodash": "./node_modules/lodash/lodash.js",
-		"velocity": "./node_modules/velocity-animate/velocity.js",
 		"vue": "./node_modules/vue/dist/vue.js",
 		"vue-router": "./node_modules/vue-router/dist/vue-router.min.js",
 		"vuex": "./node_modules/vuex/dist/vuex.min.js"
 	},
 	"browserify-shim": {
-		"bluebird": "Promise",
 		"jquery": "jQuery",
-		"js-cookie": "Cookies",
 		"lodash": "_",
 		"vue": "Vue"
 	},

@@ -10,7 +10,6 @@ import babelify     from "babelify";
 import buffer       from "vinyl-buffer";
 import source       from "vinyl-source-stream";
 import cprocess     from "child_process";
-import bourbon      from "node-bourbon";
 import panini       from "panini";
 import importer     from "sass-importer-npm";
 import watchify     from "watchify";
@@ -49,8 +48,6 @@ const app_paths = {
 const sass_app_conf = {
 	importer     : importer,
 	includePaths : [
-		//bourbon path
-		bourbon.includePaths,
 		//family.scss
 		"./node_modules/family.scss/source/src/"
 	]

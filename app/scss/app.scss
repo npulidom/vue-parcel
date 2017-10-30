@@ -12,8 +12,7 @@
 //settings
 @import "settings";
 //vendors
-@import "normalize-scss/sass/normalize";
-@import "basscss-sass/scss/basscss";
+@import "normalize-scss/sass/normalize/import-now";
 
 //Partials
 @import "fonts";

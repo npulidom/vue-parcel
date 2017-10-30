@@ -5,10 +5,7 @@
 import "html5shiv";
 import "lodash";
 import "vue";
-import "bluebird";
-import "js-cookie";
 import "jquery";
-import "velocity";
 
 console.info("App -> Environment: " + process.env.NODE_ENV);
 
