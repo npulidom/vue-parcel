@@ -13,7 +13,7 @@ div.section {
 
 <template>
 	<div class="section">
-		<p> <i class="fa fa-thumbs-o-up"></i> {{ section_text }} </p>
+		<p> {{ section_text }} </p>
 		<router-link to="/">
 			Go to Home
 		</router-link>
