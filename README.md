@@ -56,7 +56,6 @@ gulp watch --env staging
 - Breakpoints: [site](https://github.com/at-import/breakpoint)
 - Material Design Colors: [github](https://github.com/themekit/sass-md-colors)
 - Normalize: [site](https://necolas.github.io/normalize.css/)
-- Font Awesome: [site](http://fontawesome.io/)
 
 ### HTML
 

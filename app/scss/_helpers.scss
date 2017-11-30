@@ -4,8 +4,8 @@
 
 .d-none       { display: none; }
 .d-invisible  { visibility: hidden; opacity: 0; }
-.d-table      { display: table; }
-.d-table-cell { display: table-cell; vertical-align: middle; }
+.d-block      { display: block; }
+.d-iblock     { display: inline-block; }
 .p-relative   { position: relative; }
 .w-100        { width: 100%; }
 .h-100        { height: 100%; }
