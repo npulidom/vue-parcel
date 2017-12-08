@@ -67,8 +67,8 @@ const autoprefixer_conf = {
 };
 
 const uglify_conf = {
-	mangle   : { screw_ie8 : true },
-	compress : { screw_ie8 : true }
+	mangle   : { },
+	compress : { }
 };
 
 //browsert sync conf
