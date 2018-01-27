@@ -298,8 +298,8 @@ function copyResources() {
 	cprocess.exec("cp -R app/*.html dist/");
 	//images
 	cprocess.exec("mkdir -p dist/images");
-	cprocess.exec("cp -R app/images/ dist/images/");
+	cprocess.exec("cp -R app/images/* dist/images/");
 	//fonts
 	cprocess.exec("mkdir -p dist/fonts");
-	cprocess.exec("cp -R app/fonts/ dist/fonts/");
+	cprocess.exec("cp -R app/fonts/* dist/fonts/");
 }
