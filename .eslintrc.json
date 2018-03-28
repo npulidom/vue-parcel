@@ -23,10 +23,6 @@
 		"linebreak-style": [
 			"error",
 			"unix"
-		],
-		"semi": [
-			"warn",
-			"always"
 		]
 	}
 }

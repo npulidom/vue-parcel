@@ -23,10 +23,8 @@ div.section {
 <script>
 export default {
 	name : "Section",
-	data() {
-		return {
-			section_text : "Hello World from Section!"
-		};
-	}
-};
+	data : () => ({
+		section_text : "Hello World from Section!"
+	})
+}
 </script>

@@ -2,34 +2,34 @@
  *  Gulp App Builder Task Runner
  */
 
-import gulp         from "gulp";
-import browser      from "browser-sync";
-import browserify   from "browserify";
-import hmr          from "browserify-hmr";
-import babelify     from "babelify";
-import buffer       from "vinyl-buffer";
-import source       from "vinyl-source-stream";
-import cprocess     from "child_process";
-import panini       from "panini";
-import importer     from "sass-importer-npm";
-import watchify     from "watchify";
-import autoprefixer from "autoprefixer";
-import vueify       from "vueify";
-import envify       from "envify";
-import yargs        from "yargs";
+import gulp         from "gulp"
+import browser      from "browser-sync"
+import browserify   from "browserify"
+import hmr          from "browserify-hmr"
+import babelify     from "babelify"
+import buffer       from "vinyl-buffer"
+import source       from "vinyl-source-stream"
+import cprocess     from "child_process"
+import panini       from "panini"
+import importer     from "sass-importer-npm"
+import watchify     from "watchify"
+import autoprefixer from "autoprefixer"
+import vueify       from "vueify"
+import envify       from "envify"
+import yargs        from "yargs"
 //gulp plugins
-import gutil         from "gulp-util";
-import gulpif        from "gulp-if";
-import rename        from "gulp-rename";
-import sass          from "gulp-sass";
-import css_minifier  from "gulp-clean-css";
-import html_minifier from "gulp-htmlmin";
-import rev           from "gulp-rev";
-import inject        from "gulp-inject";
-import uglify        from "gulp-uglify";
-import postcss       from "gulp-postcss";
-import sourcemaps    from "gulp-sourcemaps";
-import stripdebug    from "gulp-strip-debug";
+import gutil         from "gulp-util"
+import gulpif        from "gulp-if"
+import rename        from "gulp-rename"
+import sass          from "gulp-sass"
+import css_minifier  from "gulp-clean-css"
+import html_minifier from "gulp-htmlmin"
+import rev           from "gulp-rev"
+import inject        from "gulp-inject"
+import uglify        from "gulp-uglify"
+import postcss       from "gulp-postcss"
+import sourcemaps    from "gulp-sourcemaps"
+import stripdebug    from "gulp-strip-debug"
 
 /* Consts */
 
@@ -42,7 +42,7 @@ const app_paths = {
 	assets : "./app/assets/",
 	images : "./app/images/",
 	fonts  : "./app/fonts/"
-};
+}
 
 //sass app conf
 const sass_app_conf = {
@@ -51,7 +51,7 @@ const sass_app_conf = {
 		//family.scss
 		"./node_modules/family.scss/source/src/"
 	]
-};
+}
 
 // set up the browserify options
 const browserify_opts = {
@@ -59,23 +59,23 @@ const browserify_opts = {
 	cache        : {},
 	packageCache : {},
 	consoleLogs  : true
-};
+}
 
 const autoprefixer_conf = {
 	browsers : ["last 5 versions"],
 	cascade  : false
-};
+}
 
 const uglify_conf = {
 	mangle   : { },
 	compress : { }
-};
+}
 
 //browsert sync conf
-var browserSync = browser.create();
+var browserSync = browser.create()
 
 // global vars
-var b = null;
+var b = null
 
 /** Tasks **/
 
@@ -86,26 +86,26 @@ gulp.task("build", [
 	"bundle-scss",
 	"minify-css",
 	"minify-js"
-], exportApp);
+], exportApp)
 //watch
-gulp.task("watch", watchApp);
+gulp.task("watch", watchApp)
 //bundlers
-gulp.task("bundle-hbs", bundleHbs);
-gulp.task("bundle-scss", bundleScss);
-gulp.task("bundle-js", bundleJs);
+gulp.task("bundle-hbs", bundleHbs)
+gulp.task("bundle-scss", bundleScss)
+gulp.task("bundle-js", bundleJs)
 //minifiers
-gulp.task("minify-js", minifyJs);
-gulp.task("minify-css", minifyCss);
+gulp.task("minify-js", minifyJs)
+gulp.task("minify-css", minifyCss)
 //default
-gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")); });
+gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")) })
 //set node env to production
 gulp.task("prod-env", () => {
 
 	//clean dist folder
-	cprocess.exec("rm -rf dist/");
+	cprocess.exec("rm -rf dist/")
 
-	return process.env.NODE_ENV = "production";
-});
+	return process.env.NODE_ENV = "production"
+})
 
 /**
  * Set Browserify object
@@ -113,11 +113,11 @@ gulp.task("prod-env", () => {
 function setBrowserify(env = false, release = false) {
 
 	if(!env) {
-		gutil.log(gutil.colors.red("Browserify environment not defined!"));
-		return;
+		gutil.log(gutil.colors.red("Browserify environment not defined!"))
+		return
 	}
 
-	gutil.log(gutil.colors.magenta("Browserify env: " + env));
+	gutil.log(gutil.colors.magenta("Browserify env: " + env))
 
 	//browserify object with transforms
 	b = browserify(browserify_opts)
@@ -134,21 +134,21 @@ function setBrowserify(env = false, release = false) {
 		.transform(vueify, {
 			sass    : sass_app_conf,
 			postcss : [autoprefixer(autoprefixer_conf)],
-		});
+		})
 
 	// set custom props
-	b.release = release;
-	b.clogs   = browserify_opts.consoleLogs;
+	b.release = release
+	b.clogs   = browserify_opts.consoleLogs
 
 	if(b.release)
-		return;
+		return
 
 	//development setup
-	b.on("update", bundleJs); //on any dep update, runs the bundler
-	b.on("log", gutil.log);   //output build logs for watchify
+	b.on("update", bundleJs) //on any dep update, runs the bundler
+	b.on("log", gutil.log)   //output build logs for watchify
 	//plugins
-	b.plugin(hmr);
-	b.plugin(watchify);
+	b.plugin(hmr)
+	b.plugin(watchify)
 }
 
 /**
@@ -156,27 +156,27 @@ function setBrowserify(env = false, release = false) {
  */
 function watchApp() {
 
-	setBrowserify(yargs.argv.env || "development");
+	setBrowserify(yargs.argv.env || "development")
 
 	//browser sync server
 	browserSync.init({
 		server : { baseDir : app_paths.root }
-	});
+	})
 
 	//sass files
-	gulp.watch(app_paths.sass + "*.scss", bundleScss);
+	gulp.watch(app_paths.sass + "*.scss", bundleScss)
 	//hbs files
-	gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs);
+	gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs)
 
 	//bundle js
-	setTimeout(() => { bundleJs(); }, 1000);
+	setTimeout(() => { bundleJs() }, 1000)
 	// bundle sass
-	setTimeout(() => { bundleScss(); }, 2000);
+	setTimeout(() => { bundleScss() }, 2000)
 	//reload browser
 	setTimeout(() => {
-		browserSync.reload();
-		gutil.log(gutil.colors.green("Watcher ready, listening..."));
-	}, 10000);
+		browserSync.reload()
+		gutil.log(gutil.colors.green("Watcher ready, listening..."))
+	}, 10000)
 }
 
 /**
@@ -184,7 +184,7 @@ function watchApp() {
  */
 function bundleScss() {
 
-	gutil.log(gutil.colors.yellow("Bundling Scss files..."));
+	gutil.log(gutil.colors.yellow("Bundling Scss files..."))
 
 	return gulp.src(app_paths.sass + "[^_]*.scss")
 			.pipe(sourcemaps.init())
@@ -196,7 +196,7 @@ function bundleScss() {
 			]))
 			.pipe(sourcemaps.write())
 			.pipe(gulp.dest(app_paths.assets))
-			.pipe(browserSync.stream());
+			.pipe(browserSync.stream())
 }
 
 /**
@@ -204,9 +204,9 @@ function bundleScss() {
  */
 function bundleJs() {
 
-	let dest = b.release ? "./dist/assets/" : app_paths.assets;
+	let dest = b.release ? "./dist/assets/" : app_paths.assets
 
-	gutil.log(gutil.colors.yellow("Bundling JS files to path: " + dest));
+	gutil.log(gutil.colors.yellow("Bundling JS files to path: " + dest))
 
 	return b.bundle()
 			.on("error", gutil.log.bind(gutil, "Browserify Error"))
@@ -216,7 +216,7 @@ function bundleJs() {
 			.pipe(gulpif(b.release, uglify(uglify_conf)))
 			.pipe(gulpif(b.release, rename({ suffix : ".min" })))
 			.pipe(gulpif(b.release, rev()))
-			.pipe(gulp.dest(dest));
+			.pipe(gulp.dest(dest))
 }
 
 /**
@@ -224,10 +224,10 @@ function bundleJs() {
  */
 function bundleHbs() {
 
-	gutil.log(gutil.colors.yellow("Building HBS files..."));
+	gutil.log(gutil.colors.yellow("Building HBS files..."))
 
 	//rerfresh panini
-	panini.refresh();
+	panini.refresh()
 
 	return gulp.src(app_paths.hbs + "*.hbs")
 			//panini + handlebars
@@ -240,7 +240,7 @@ function bundleHbs() {
 			//rename
 			.pipe(rename({ extname : ".html" }))
 			.pipe(gulp.dest(app_paths.root))
-			.pipe(browserSync.stream());
+			.pipe(browserSync.stream())
 }
 
 /**
@@ -248,9 +248,9 @@ function bundleHbs() {
  */
 function minifyJs() {
 
-	setBrowserify(yargs.argv.env || "production", true);
+	setBrowserify(yargs.argv.env || "production", true)
 
-	return bundleJs();
+	return bundleJs()
 }
 
 /**
@@ -263,7 +263,7 @@ function minifyCss() {
 			.pipe(css_minifier({ processImport : false }))
 			.pipe(rename({ suffix : ".min" }))
 			.pipe(rev())
-			.pipe(gulp.dest("./dist/assets/"));
+			.pipe(gulp.dest("./dist/assets/"))
 }
 
 /**
@@ -272,19 +272,19 @@ function minifyCss() {
 function exportApp() {
 
 	//copy resources to dist folder
-	copyResources();
+	copyResources()
 
 	//assets src injection
 	let sources = gulp.src(["./dist/assets/*.min.js", "./dist/assets/*.min.css"],
-						   { read : false });
+						   { read : false })
 
-	gutil.log(gutil.colors.yellow("Building HTML files..."));
+	gutil.log(gutil.colors.yellow("Building HTML files..."))
 
 	return gulp.src("./dist/*.html")
 		//inject assets source files
 		.pipe(inject(sources, { relative : true }))
 		.pipe(html_minifier({ collapseWhitespace : true }))
-		.pipe(gulp.dest("./dist/"));
+		.pipe(gulp.dest("./dist/"))
 }
 
 /**
@@ -292,14 +292,14 @@ function exportApp() {
  */
 function copyResources() {
 
-	gutil.log(gutil.colors.yellow("Exporting resources files..."));
+	gutil.log(gutil.colors.yellow("Exporting resources files..."))
 
 	//html
-	cprocess.exec("cp -R app/*.html dist/");
+	cprocess.exec("cp -R app/*.html dist/")
 	//images
-	cprocess.exec("mkdir -p dist/images");
-	cprocess.exec("cp -R app/images/* dist/images/");
+	cprocess.exec("mkdir -p dist/images")
+	cprocess.exec("cp -R app/images/* dist/images/")
 	//fonts
-	cprocess.exec("mkdir -p dist/fonts");
-	cprocess.exec("cp -R app/fonts/* dist/fonts/");
+	cprocess.exec("mkdir -p dist/fonts")
+	cprocess.exec("cp -R app/fonts/* dist/fonts/")
 }

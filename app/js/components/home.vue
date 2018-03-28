@@ -23,10 +23,8 @@ div.home {
 <script>
 export default {
 	name : "Home",
-	data() {
-		return {
-			home_text : "Hello World from Home!"
-		};
-	}
-};
+	data : () => ({
+		home_text : "Hello World from Home!"
+	})
+}
 </script>

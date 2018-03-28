@@ -2,10 +2,10 @@
  * Main Module
  */
 
-import Vuex from "vuex";
-import VueRouter from "vue-router";
+import Vuex from "vuex"
+import VueRouter from "vue-router"
 
-import loader from "./loader.js";
+import loader from "./loader.js"
 
 export default {
 	// module props
@@ -16,7 +16,7 @@ export default {
 		//new router
 		const router = new VueRouter({
 			routes : loader.routes
-		});
+		})
 
 		//new vuex store
 		const store = new Vuex.Store({
@@ -24,7 +24,7 @@ export default {
 			},
 			mutations : {
 			}
-		});
+		})
 
 		//new app instance
 		this.app = new Vue({
@@ -34,6 +34,6 @@ export default {
 			}
 		})
 		//mount app
-		.$mount("#app");
+		.$mount("#app")
 	}
-};
+}

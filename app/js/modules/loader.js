@@ -2,8 +2,8 @@
  * Loader Module
  */
 
-import Home from "../components/home.vue";
-import Section from "../components/section.vue";
+import Home from "../components/home.vue"
+import Section from "../components/section.vue"
 
 export default {
 	name : "loader",
@@ -23,4 +23,4 @@ export default {
 			redirect : "/"
 		}
 	]
-};
+}
