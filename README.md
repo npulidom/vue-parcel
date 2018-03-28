@@ -16,7 +16,7 @@ Scaffolding project for building static SPA's with VueJs 2.
 
 ## Dependencies
 
-- NodeJs >= 4.x
+- NodeJs >= 6.x
 - Npm >= 3.x
 
 ## Usage
