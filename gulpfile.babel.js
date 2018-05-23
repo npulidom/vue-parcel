@@ -17,8 +17,9 @@ import autoprefixer from "autoprefixer"
 import vueify       from "vueify"
 import envify       from "envify"
 import yargs        from "yargs"
+import colors       from "ansi-colors"
+import logger       from "fancy-log"
 //gulp plugins
-import gutil         from "gulp-util"
 import gulpif        from "gulp-if"
 import rename        from "gulp-rename"
 import sass          from "gulp-sass"
@@ -97,7 +98,7 @@ gulp.task("bundle-js", bundleJs)
 gulp.task("minify-js", minifyJs)
 gulp.task("minify-css", minifyCss)
 //default
-gulp.task("default", () => { return gutil.log(gutil.colors.blue("Run gulp [watch, build]")) })
+gulp.task("default", () => { return logger(colors.blue("Run gulp [watch, build]")) })
 //set node env to production
 gulp.task("prod-env", () => {
 
@@ -113,9 +114,9 @@ gulp.task("prod-env", () => {
 function setBrowserify(env = false, release = false) {
 
 	if(!env)
-		return gutil.log(gutil.colors.red("Browserify environment not defined!"))
+		return logger(colors.red("Browserify environment not defined!"))
 
-	gutil.log(gutil.colors.magenta("Browserify env: " + env))
+	logger(colors.magenta("Browserify env: " + env))
 
 	//browserify object with transforms
 	b = browserify(browserify_opts)
@@ -136,15 +137,15 @@ function setBrowserify(env = false, release = false) {
 
 	// set custom props
 	b.release = release
-	b.clogs   = browserify_opts.consoleLogs
+	b.clogs   = browserify_opts.consoleLogs //remove console.logs?
 
 	if(b.release)
 		return
 
 	//events
 	b.on("update", bundleJs) //on any dep update, runs the bundler
-	b.on("log", gutil.log)   //output build logs for watchify
-	
+	b.on("log", logger)   //output build logs for watchify
+
 	//plugins
 	b.plugin(hmr)
 	b.plugin(watchify)
@@ -174,7 +175,7 @@ function watchApp() {
 	//reload browser
 	setTimeout(() => {
 		browserSync.reload()
-		gutil.log(gutil.colors.green("Watcher ready, listening..."))
+		logger(colors.green("Watcher ready, listening..."))
 	}, 10000)
 }
 
@@ -183,7 +184,7 @@ function watchApp() {
  */
 function bundleScss() {
 
-	gutil.log(gutil.colors.yellow("Bundling Scss files..."))
+	logger(colors.yellow("Bundling Scss files..."))
 
 	return gulp.src(app_paths.sass + "[^_]*.scss")
 			.pipe(sourcemaps.init())
@@ -205,10 +206,10 @@ function bundleJs() {
 
 	let dest = b.release ? "./dist/assets/" : app_paths.assets
 
-	gutil.log(gutil.colors.yellow("Bundling JS files to path: " + dest))
+	logger(colors.yellow("Bundling JS files to path: " + dest))
 
 	return b.bundle()
-			.on("error", gutil.log.bind(gutil, "Browserify Error"))
+			.on("error", (e) => { logger.error("Browserify Error:", e) })
 			.pipe(source("app.js"))
 			.pipe(buffer())
 			.pipe(gulpif(!b.clogs, stripdebug()))
@@ -223,7 +224,7 @@ function bundleJs() {
  */
 function bundleHbs() {
 
-	gutil.log(gutil.colors.yellow("Building HBS files..."))
+	logger(colors.yellow("Building HBS files..."))
 
 	//rerfresh panini
 	panini.refresh()
@@ -277,7 +278,7 @@ function exportApp() {
 	let sources = gulp.src(["./dist/assets/*.min.js", "./dist/assets/*.min.css"],
 						   { read : false })
 
-	gutil.log(gutil.colors.yellow("Building HTML files..."))
+	logger(colors.yellow("Building HTML files..."))
 
 	return gulp.src("./dist/*.html")
 		//inject assets source files
@@ -291,7 +292,7 @@ function exportApp() {
  */
 function copyResources() {
 
-	gutil.log(gutil.colors.yellow("Exporting resources files..."))
+	logger(colors.yellow("Exporting resources files..."))
 
 	//html
 	cprocess.exec("cp -R app/*.html dist/")
