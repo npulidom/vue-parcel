@@ -1,5 +1,5 @@
 /**
- *  Gulp App Builder Task Runner
+ *  Gulp App Builder - Task Runner
  */
 
 import gulp         from "gulp"
@@ -112,10 +112,8 @@ gulp.task("prod-env", () => {
  */
 function setBrowserify(env = false, release = false) {
 
-	if(!env) {
-		gutil.log(gutil.colors.red("Browserify environment not defined!"))
-		return
-	}
+	if(!env)
+		return gutil.log(gutil.colors.red("Browserify environment not defined!"))
 
 	gutil.log(gutil.colors.magenta("Browserify env: " + env))
 
@@ -143,9 +141,10 @@ function setBrowserify(env = false, release = false) {
 	if(b.release)
 		return
 
-	//development setup
+	//events
 	b.on("update", bundleJs) //on any dep update, runs the bundler
 	b.on("log", gutil.log)   //output build logs for watchify
+	
 	//plugins
 	b.plugin(hmr)
 	b.plugin(watchify)

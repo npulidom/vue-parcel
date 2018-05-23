@@ -3,12 +3,12 @@ Vue Static webapp
 
 [![GitHub version](https://badge.fury.io/gh/npulidom%2Fvue-webapp.svg)](https://badge.fury.io/gh/npulidom%2Fvue-webapp)
 
-Scaffolding project for building static SPA's with VueJs 2.
+Simple scaffolding project for building static SPA's with VueJs 2.
 
 ## Features
 
-- ES6 Modules (browserify + babelify)
-- Hot Module Reload (browserify-hmr)
+- ES6+ Modules (browserify + babelify transforms)
+- Hot Module Reload (browserify-hmr, same as webpack)
 - JS Linter: [eslint](http://eslint.org/)
 - BrowserSync: [site](https://www.browsersync.io/)
 - CSS Autoprefixer (postcss)
