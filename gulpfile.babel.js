@@ -122,7 +122,7 @@ function setBrowserify(env = false, release = false) {
 	b = browserify(browserify_opts)
 		//es6
 		.transform(babelify, {
-			presets : ["es2015"]
+			presets : ["env"]
 		})
 		//envify
 		.transform(envify, {

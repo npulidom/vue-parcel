@@ -16,8 +16,13 @@ Simple scaffolding project for building static SPA's with VueJs 2.
 
 ## Dependencies
 
-- NodeJs >= 6.x
-- Npm >= 3.x
+- NodeJs >= 8.x
+- Yarn
+
+## Install
+```
+yarn install
+```
 
 ## Usage
 
