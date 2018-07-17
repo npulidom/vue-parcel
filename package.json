@@ -58,7 +58,7 @@
 		"html5shiv": "./node_modules/html5shiv/dist/html5shiv.js",
 		"jquery": "./node_modules/jquery/dist/jquery.js",
 		"lodash": "./node_modules/lodash/lodash.js",
-		"vue": "./node_modules/vue/dist/vue.js",
+		"vue": "./node_modules/vue/dist/vue.min.js",
 		"vue-router": "./node_modules/vue-router/dist/vue-router.min.js",
 		"vuex": "./node_modules/vuex/dist/vuex.min.js"
 	},
