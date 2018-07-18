@@ -4,7 +4,6 @@
 *.log
 
 # Build & Packages
-package-lock.json
 node_modules
 vendor
 

@@ -7,9 +7,9 @@
 		"es6"     : true
 	},
 	"globals": {
+		"_"         : false,
 		"$"         : false,
 		"jQuery"    : false,
-		"_"         : false,
 		"Vue"       : false,
 		"FastClick" : false
 	},
