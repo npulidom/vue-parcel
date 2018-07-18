@@ -47,22 +47,13 @@ gulp watch --env staging
 
 ### Javascript
 
-- Html5shiv: [github](https://github.com/aFarkas/html5shiv)
-- Lodash: [docs](https://lodash.com/docs)
 - FastClick: [github](https://github.com/ftlabs/fastclick)
+- Lodash: [docs](https://lodash.com/docs)
 - jQuery 3: [site](https://jquery.com/)
 - Vue 2: [site](https://vuejs.org/)
 - Vue Router 2: [site](http://router.vuejs.org/)
 - Vuex 2: [github](https://github.com/vuejs/vuex)
 
-### Sass
+### Stylus
 
-- Family: [site](https://lukyvj.github.io/family.scss/)
-- Breakpoints: [site](https://github.com/at-import/breakpoint)
-- Material Design Colors: [github](https://github.com/themekit/sass-md-colors)
 - Normalize: [site](https://necolas.github.io/normalize.css/)
-
-### HTML
-
-- Handlebars: [site](http://handlebarsjs.com/)
-- Panini: [github](https://github.com/zurb/panini)

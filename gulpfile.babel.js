@@ -10,7 +10,6 @@ import babelify     from "babelify"
 import buffer       from "vinyl-buffer"
 import source       from "vinyl-source-stream"
 import cprocess     from "child_process"
-import panini       from "panini"
 import importer     from "sass-importer-npm"
 import watchify     from "watchify"
 import autoprefixer from "autoprefixer"
@@ -22,13 +21,13 @@ import logger       from "fancy-log"
 //gulp plugins
 import gulpif        from "gulp-if"
 import rename        from "gulp-rename"
-import sass          from "gulp-sass"
 import css_minifier  from "gulp-clean-css"
 import html_minifier from "gulp-htmlmin"
 import rev           from "gulp-rev"
 import inject        from "gulp-inject"
 import uglify        from "gulp-uglify"
 import postcss       from "gulp-postcss"
+import stylus        from "gulp-stylus"
 import sourcemaps    from "gulp-sourcemaps"
 import stripdebug    from "gulp-strip-debug"
 
@@ -38,20 +37,16 @@ import stripdebug    from "gulp-strip-debug"
 const app_paths = {
 	root   : "./app/",
 	js     : "./app/js/",
-	sass   : "./app/scss/",
-	hbs    : "./app/hbs/",
+	stylus : "./app/stylus/",
 	assets : "./app/assets/",
 	images : "./app/images/",
 	fonts  : "./app/fonts/"
 }
 
-//sass app conf
-const sass_app_conf = {
-	importer     : importer,
-	includePaths : [
-		//family.scss
-		"./node_modules/family.scss/source/src/"
-	]
+// stylus app conf
+const stylus_app_conf = {
+	"include"     : "node_modules",
+	"include css" : true
 }
 
 // set up the browserify options
@@ -59,7 +54,7 @@ const browserify_opts = {
 	entries      : [app_paths.js + "app.js"],
 	cache        : {},
 	packageCache : {},
-	consoleLogs  : true
+	consoleLogs  : true // remove console.log statements flag
 }
 
 const autoprefixer_conf = {
@@ -68,8 +63,8 @@ const autoprefixer_conf = {
 }
 
 const uglify_conf = {
-	mangle   : { },
-	compress : { }
+	mangle   : {},
+	compress : {}
 }
 
 //browsert sync conf
@@ -83,16 +78,14 @@ var b = null
 //build & deploy
 gulp.task("build", [
 	"prod-env",
-	"bundle-hbs",
-	"bundle-scss",
+	"bundle-styles",
 	"minify-css",
 	"minify-js"
 ], exportApp)
 //watch
 gulp.task("watch", watchApp)
 //bundlers
-gulp.task("bundle-hbs", bundleHbs)
-gulp.task("bundle-scss", bundleScss)
+gulp.task("bundle-styles", bundleStyles)
 gulp.task("bundle-js", bundleJs)
 //minifiers
 gulp.task("minify-js", minifyJs)
@@ -125,13 +118,10 @@ function setBrowserify(env = false, release = false) {
 			presets : ["env"]
 		})
 		//envify
-		.transform(envify, {
-			_        : "purge",
-			NODE_ENV : env
-		})
+		.transform(envify, { _ : "purge", NODE_ENV : env })
 		//vueify
 		.transform(vueify, {
-			sass    : sass_app_conf,
+			stylus  : stylus_app_conf,
 			postcss : [autoprefixer(autoprefixer_conf)],
 		})
 
@@ -146,8 +136,12 @@ function setBrowserify(env = false, release = false) {
 	b.on("update", bundleJs) //on any dep update, runs the bundler
 	b.on("log", logger)   //output build logs for watchify
 
-	//plugins
-	b.plugin(hmr)
+	// hmr plugin
+	let port = Math.floor(Math.random() * (3599 - 3100 + 1) + 3100)
+	logger(colors.blue("Loading HMR at port", port))
+	b.plugin(hmr, { port : port, url : "http://localhost:" + port })
+
+	// watchigy plugin
 	b.plugin(watchify)
 }
 
@@ -164,16 +158,15 @@ function watchApp() {
 	})
 
 	//sass files
-	gulp.watch(app_paths.sass + "*.scss", bundleScss)
-	//hbs files
-	gulp.watch([app_paths.hbs + "*.hbs", app_paths.hbs + "**/*.hbs"], bundleHbs)
+	gulp.watch(app_paths.stylus + "*.styl", bundleStyles)
 
 	//bundle js
 	setTimeout(() => { bundleJs() }, 1000)
 	// bundle sass
-	setTimeout(() => { bundleScss() }, 2000)
+	setTimeout(() => { bundleStyles() }, 2000)
 	//reload browser
 	setTimeout(() => {
+
 		browserSync.reload()
 		logger(colors.green("Watcher ready, listening..."))
 	}, 10000)
@@ -182,14 +175,14 @@ function watchApp() {
 /**
  * Sass bundler
  */
-function bundleScss() {
+function bundleStyles() {
 
-	logger(colors.yellow("Bundling Scss files..."))
+	logger(colors.yellow("Bundling Styles..."))
 
-	return gulp.src(app_paths.sass + "[^_]*.scss")
+	return gulp.src(app_paths.stylus + "app.styl")
 			.pipe(sourcemaps.init())
 			//sass
-			.pipe(sass(sass_app_conf).on("error", sass.logError))
+			.pipe(stylus(stylus_app_conf).on("error", logger))
 			//autoprefixer
 			.pipe(postcss([
 				autoprefixer(autoprefixer_conf)
@@ -206,7 +199,7 @@ function bundleJs() {
 
 	let dest = b.release ? "./dist/assets/" : app_paths.assets
 
-	logger(colors.yellow("Bundling JS files to path: " + dest))
+	logger(colors.yellow("Bundling JS files, dest. path: " + dest))
 
 	return b.bundle()
 			.on("error", (e) => { logger.error("Browserify Error:", e) })
@@ -217,30 +210,6 @@ function bundleJs() {
 			.pipe(gulpif(b.release, rename({ suffix : ".min" })))
 			.pipe(gulpif(b.release, rev()))
 			.pipe(gulp.dest(dest))
-}
-
-/**
- * Panini Bundler
- */
-function bundleHbs() {
-
-	logger(colors.yellow("Building HBS files..."))
-
-	//rerfresh panini
-	panini.refresh()
-
-	return gulp.src(app_paths.hbs + "*.hbs")
-			//panini + handlebars
-			.pipe(panini({
-				root     : app_paths.hbs,
-				layouts  : app_paths.hbs + "layouts",
-				partials : app_paths.hbs + "partials",
-				//data : "some-file.json"
-			}))
-			//rename
-			.pipe(rename({ extname : ".html" }))
-			.pipe(gulp.dest(app_paths.root))
-			.pipe(browserSync.stream())
 }
 
 /**
@@ -275,15 +244,14 @@ function exportApp() {
 	copyResources()
 
 	//assets src injection
-	let sources = gulp.src(["./dist/assets/*.min.js", "./dist/assets/*.min.css"],
-						   { read : false })
+	let sources = gulp.src(["./dist/assets/*.min.js", "./dist/assets/*.min.css"], { read : false })
 
-	logger(colors.yellow("Building HTML files..."))
+	logger(colors.yellow("Copying HTML files..."))
 
 	return gulp.src("./dist/*.html")
 		//inject assets source files
 		.pipe(inject(sources, { relative : true }))
-		.pipe(html_minifier({ collapseWhitespace : true }))
+		.pipe(html_minifier({ collapseWhitespace : true, removeComments : true }))
 		.pipe(gulp.dest("./dist/"))
 }
 

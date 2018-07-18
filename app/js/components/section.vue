@@ -2,22 +2,18 @@
  * Section Component
  */
 
-<style lang="scss">
+<style lang="stylus">
 
-@import "../../scss/libs";
+.section
+	padding 20px
+	color green
 
-div.section {
-	color: purple;
-}
 </style>
 
-<template>
-	<div class="section">
-		<p> {{ section_text }} </p>
-		<router-link to="/">
-			Go to Home
-		</router-link>
-	</div>
+<template lang="pug">
+	div.section
+		p {{ section_text }}
+		router-link(to="/") Go to Home
 </template>
 
 <script>

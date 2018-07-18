@@ -2,22 +2,18 @@
  * Home Component
  */
 
-<style lang="scss">
+<style lang="stylus">
 
-@import "../../scss/libs";
+.home
+	padding 20px
+	color blue
 
-div.home {
-	color: blue;
-}
 </style>
 
-<template>
-	<div class="home">
-		<p> {{ home_text }} </p>
-		<router-link to="/section">
-			Go to Section
-		</router-link>
-	</div>
+<template lang="pug">
+	div.home
+		p {{ home_text }}
+		router-link(to="/section") Go to Section
 </template>
 
 <script>

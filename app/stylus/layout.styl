@@ -1,0 +1,78 @@
+/**
+ * Layout
+ **/
+
+// globals
+html, body
+	height 100%
+	overflow-x hidden
+	background lightGray
+
+body
+	height auto
+	min-height 100%
+	color brown
+
+*, *:before, *:after
+	box-sizing border-box
+	margin 0
+	padding 0
+	outline 0
+	border 0
+	-webkit-user-select none
+
+*:not(input):not(textarea)
+	-webkit-user-select none
+	-webkit-touch-callout none
+
+a
+	text-decoration none
+	color crimson
+
+option
+	color gray
+
+button
+	-webkit-appearance none
+	appearance: none
+	outline none
+	border 0
+	padding 0
+	background transparent
+	cursor pointer
+
+@-webkit-keyframes autofill
+	to
+		background transparent
+
+// custom chrome autofills
+input-webkit-autofill,
+input-webkit-autofill:active,
+input-webkit-autofill:hover,
+input-webkit-autofill:focus
+	-webkit-animation-name autofill
+	-webkit-animation-fill-mode both
+	-webkit-transition-delay 9999s
+	-webkit-transition color 9999s ease-out, background-color 9999s ease-out
+
+// remove default cross in edge
+input-ms-clear
+	display none
+
+// disable border highlight in inputs
+inputfocus,
+selectfocus,
+textareafocus,
+buttonfocus
+	outline none
+
+noscript p
+	position fixed
+	top 5%
+	left 0
+	width 100%
+	text-align center
+
+// app Wrapper
+#app
+	min-height 100%
