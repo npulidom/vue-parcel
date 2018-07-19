@@ -162,14 +162,14 @@ function watchApp() {
 
 	//bundle js
 	setTimeout(() => { bundleJs() }, 1000)
-	// bundle sass
-	setTimeout(() => { bundleStyles() }, 2000)
+	// bundle styles
+	setTimeout(() => { bundleStyles() }, 1100)
 	//reload browser
 	setTimeout(() => {
 
 		browserSync.reload()
 		logger(colors.green("Watcher ready, listening..."))
-	}, 10000)
+	}, 6000)
 }
 
 /**
