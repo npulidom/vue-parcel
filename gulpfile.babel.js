@@ -18,7 +18,7 @@ import envify       from "envify"
 import yargs        from "yargs"
 import colors       from "ansi-colors"
 import logger       from "fancy-log"
-//gulp plugins
+// gulp plugins
 import gulpif        from "gulp-if"
 import rename        from "gulp-rename"
 import css_minifier  from "gulp-clean-css"
@@ -33,7 +33,7 @@ import stripdebug    from "gulp-strip-debug"
 
 /* Consts */
 
-//app paths
+// paths
 const app_paths = {
 	root   : "./app/",
 	js     : "./app/js/",
@@ -43,13 +43,13 @@ const app_paths = {
 	fonts  : "./app/fonts/"
 }
 
-// stylus app conf
+// stylus conf
 const stylus_app_conf = {
 	"include"     : "node_modules",
 	"include css" : true
 }
 
-// set up the browserify options
+// browserify options
 const browserify_opts = {
 	entries      : [app_paths.js + "app.js"],
 	cache        : {},
@@ -57,17 +57,19 @@ const browserify_opts = {
 	consoleLogs  : true // remove console.log statements flag
 }
 
+// autoprefixer conf
 const autoprefixer_conf = {
 	browsers : ["last 5 versions"],
 	cascade  : false
 }
 
+// uglify conf
 const uglify_conf = {
 	mangle   : {},
 	compress : {}
 }
 
-//browsert sync conf
+// browser sync conf
 var browserSync = browser.create()
 
 // global vars
@@ -75,27 +77,27 @@ var b = null
 
 /** Tasks **/
 
-//build & deploy
+// build production
 gulp.task("build", [
 	"prod-env",
 	"bundle-styles",
 	"minify-css",
 	"minify-js"
 ], exportApp)
-//watch
+// watch
 gulp.task("watch", watchApp)
-//bundlers
+// bundlers
 gulp.task("bundle-styles", bundleStyles)
 gulp.task("bundle-js", bundleJs)
-//minifiers
+// minifiers
 gulp.task("minify-js", minifyJs)
 gulp.task("minify-css", minifyCss)
-//default
+// default
 gulp.task("default", () => { return logger(colors.blue("Run gulp [watch, build]")) })
-//set node env to production
+// set node env to production
 gulp.task("prod-env", () => {
 
-	//clean dist folder
+	// clean dist folder
 	cprocess.exec("rm -rf dist/")
 
 	return process.env.NODE_ENV = "production"
@@ -111,15 +113,15 @@ function setBrowserify(env = false, release = false) {
 
 	logger(colors.magenta("Browserify env: " + env))
 
-	//browserify object with transforms
+	// browserify object with transforms
 	b = browserify(browserify_opts)
-		//es6
+		// es6
 		.transform(babelify, {
 			presets : ["env"]
 		})
-		//envify
+		// envify
 		.transform(envify, { _ : "purge", NODE_ENV : env })
-		//vueify
+		// vueify
 		.transform(vueify, {
 			stylus  : stylus_app_conf,
 			postcss : [autoprefixer(autoprefixer_conf)],
@@ -132,7 +134,7 @@ function setBrowserify(env = false, release = false) {
 	if(b.release)
 		return
 
-	//events
+	// events
 	b.on("update", bundleJs) //on any dep update, runs the bundler
 	b.on("log", logger)   //output build logs for watchify
 
@@ -141,7 +143,7 @@ function setBrowserify(env = false, release = false) {
 	logger(colors.blue("Loading HMR at port", port))
 	b.plugin(hmr, { port : port, url : "http://localhost:" + port })
 
-	// watchigy plugin
+	// watchify plugin
 	b.plugin(watchify)
 }
 
@@ -152,19 +154,19 @@ function watchApp() {
 
 	setBrowserify(yargs.argv.env || "development")
 
-	//browser sync server
+	// browser sync server
 	browserSync.init({
 		server : { baseDir : app_paths.root }
 	})
 
-	//sass files
+	// stylus files
 	gulp.watch(app_paths.stylus + "*.styl", bundleStyles)
 
-	//bundle js
+	// bundle js
 	setTimeout(() => { bundleJs() }, 1000)
 	// bundle styles
 	setTimeout(() => { bundleStyles() }, 1100)
-	//reload browser
+	// reload browser
 	setTimeout(() => {
 
 		browserSync.reload()
@@ -181,9 +183,9 @@ function bundleStyles() {
 
 	return gulp.src(app_paths.stylus + "app.styl")
 			.pipe(sourcemaps.init())
-			//sass
+			// stylus
 			.pipe(stylus(stylus_app_conf).on("error", logger))
-			//autoprefixer
+			// autoprefixer
 			.pipe(postcss([
 				autoprefixer(autoprefixer_conf)
 			]))
@@ -240,16 +242,16 @@ function minifyCss() {
  */
 function exportApp() {
 
-	//copy resources to dist folder
+	// copy resources to dist folder
 	copyResources()
 
-	//assets src injection
+	// assets src injection
 	let sources = gulp.src(["./dist/assets/*.min.js", "./dist/assets/*.min.css"], { read : false })
 
 	logger(colors.yellow("Copying HTML files..."))
 
 	return gulp.src("./dist/*.html")
-		//inject assets source files
+		// inject assets source files
 		.pipe(inject(sources, { relative : true }))
 		.pipe(html_minifier({ collapseWhitespace : true, removeComments : true }))
 		.pipe(gulp.dest("./dist/"))
@@ -262,12 +264,12 @@ function copyResources() {
 
 	logger(colors.yellow("Exporting resources files..."))
 
-	//html
+	// html
 	cprocess.exec("cp -R app/*.html dist/")
-	//images
+	// images
 	cprocess.exec("mkdir -p dist/images")
 	cprocess.exec("cp -R app/images/* dist/images/")
-	//fonts
+	// fonts
 	cprocess.exec("mkdir -p dist/fonts")
 	cprocess.exec("cp -R app/fonts/* dist/fonts/")
 }
