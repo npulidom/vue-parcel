@@ -7,7 +7,7 @@ import Section from "../components/section.vue"
 
 export default {
 	name : "loader",
-	//Router paths
+	// router paths
 	routes : [
 		{
 			path : "/",
@@ -17,7 +17,7 @@ export default {
 			path : "/section",
 			component : Section
 		},
-		//not found
+		// not found
 		{
 			path : "*",
 			redirect : "/"

@@ -8,17 +8,17 @@ import VueRouter from "vue-router"
 import loader from "./loader.js"
 
 export default {
-	// module props
+
 	name : "main",
-	// initializer
+
 	init() {
 
-		//new router
+		// new router
 		const router = new VueRouter({
 			routes : loader.routes
 		})
 
-		//new vuex store
+		// new vuex store
 		const store = new Vuex.Store({
 			state 	  : {
 			},
@@ -26,14 +26,13 @@ export default {
 			}
 		})
 
-		//new app instance
+		// new app instance
 		this.app = new Vue({
 			store,
 			router,
 			data : {
 			}
 		})
-		//mount app
 		.$mount("#app")
 	}
 }

@@ -10,10 +10,9 @@ console.info("App -> Environment: " + process.env.NODE_ENV)
 
 // FastClick init
 import fastclick from "fastclick"
-// init
 fastclick(document.body)
 
-// release settings
+// production settings
 if(process.env.NODE_ENV == "production") {
 
 	Vue.config.silent        = true
