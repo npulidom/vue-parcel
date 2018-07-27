@@ -1,5 +1,5 @@
 /**
- * Home Component
+ * Home
  */
 
 <style lang="stylus">
@@ -11,16 +11,16 @@
 </style>
 
 <template lang="pug">
-	div.home
-		p {{ home_text }}
-		router-link(to="/section") Go to Section
+
+div.home
+	p {{ text }}
+	router-link(to="/section") Go to Section
+
 </template>
 
 <script>
 export default {
 	name : "Home",
-	data : () => ({
-		home_text : "Hello World from Home!"
-	})
+	data : () => ({ text : "Hello World from Home!" })
 }
 </script>

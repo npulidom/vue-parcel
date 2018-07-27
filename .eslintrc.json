@@ -10,7 +10,6 @@
 		"_"         : false,
 		"$"         : false,
 		"jQuery"    : false,
-		"Vue"       : false,
 		"FastClick" : false
 	},
 	"parserOptions": {

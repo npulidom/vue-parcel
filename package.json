@@ -53,14 +53,13 @@
 		"fastclick": "./node_modules/fastclick/lib/fastclick.js",
 		"jquery": "./node_modules/jquery/dist/jquery.js",
 		"lodash": "./node_modules/lodash/lodash.js",
-		"vue": "./node_modules/vue/dist/vue.js",
-		"vue-router": "./node_modules/vue-router/dist/vue-router.min.js",
-		"vuex": "./node_modules/vuex/dist/vuex.min.js"
+		"vue": "./node_modules/vue/dist/vue.common.js",
+		"vue-router": "./node_modules/vue-router/dist/vue-router.common.js",
+		"vuex": "./node_modules/vuex/dist/vuex.common.js"
 	},
 	"browserify-shim": {
 		"jquery": "jQuery",
-		"lodash": "_",
-		"vue": "Vue"
+		"lodash": "_"
 	},
 	"browserify": {
 		"transform": [
