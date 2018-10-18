@@ -2,15 +2,13 @@
  * Main Module
  */
 
-import Vue from "vue"
-import Vuex from "vuex"
+import Vue       from "vue"
+import Vuex      from "vuex"
 import VueRouter from "vue-router"
 
 import loader from "./loader.js"
 
 export default {
-
-	name : "main",
 
 	init() {
 
@@ -19,30 +17,30 @@ export default {
 		// router
 		Vue.use(VueRouter)
 
-		const router = new VueRouter({ routes : loader.routes })
+		const router = new VueRouter({ routes: loader.routes })
 
 		// store
 		Vue.use(Vuex)
 
 		const store = new Vuex.Store({
-			state 	  : {},
-			mutations : {}
+			state 	 : {},
+			mutations: {}
 		})
 
 		// app instance
 		this.app = new Vue({
 			store,
 			router,
-			data : {}
+			data: {}
 		})
 		.$mount("#app")
 	},
 
 	setupEnvironment() {
 
-		console.info("Main -> Environment: " + process.env.NODE_ENV)
+		console.log("Main -> Environment:", process.env.NODE_ENV)
 
-		if(process.env.NODE_ENV != "production")
+		if (process.env.NODE_ENV != "production")
 			return
 
 		Vue.config.silent        = true

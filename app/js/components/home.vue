@@ -13,6 +13,7 @@
 <template lang="pug">
 
 div.home
+
 	p {{ text }}
 	router-link(to="/section") Go to Section
 
@@ -20,7 +21,9 @@ div.home
 
 <script>
 export default {
-	name : "Home",
-	data : () => ({ text : "Hello World from Home!" })
+
+	name: "Home",
+
+	data: () => ({ text: "Hello World from Home!" })
 }
 </script>
