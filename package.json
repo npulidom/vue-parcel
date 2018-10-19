@@ -33,7 +33,6 @@
 		"gulp-stylus": "~2.7.0",
 		"gulp-uglify": "~3.0.0",
 		"pug": "^2.0.3",
-		"sass-importer-npm": "~1.0.2",
 		"vinyl-buffer": "~1.0.1",
 		"vinyl-source-stream": "~2.0.0",
 		"vueify": "~9.4.1",

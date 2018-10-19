@@ -10,7 +10,6 @@ import babelify     from "babelify"
 import buffer       from "vinyl-buffer"
 import source       from "vinyl-source-stream"
 import cprocess     from "child_process"
-import importer     from "sass-importer-npm"
 import watchify     from "watchify"
 import autoprefixer from "autoprefixer"
 import vueify       from "vueify"
@@ -203,7 +202,7 @@ function bundleJs() {
 
 	let dest = b.release ? "./dist/assets/" : app_paths.assets
 
-	logger(colors.yellow("Bundling JS files, dest. path: " + dest))
+	logger(colors.yellow(`Bundling JS files, dest. path: ${dest}`))
 
 	return b.bundle()
 			.on("error", e => logger.error("Browserify Error:", e))
