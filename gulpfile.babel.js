@@ -135,7 +135,7 @@ function setBrowserify(env = false, release = false) {
 	b.release = release
 	b.clogs   = browserify_opts.consoleLogs //remove console.logs?
 
-	if(b.release)
+	if (b.release)
 		return
 
 	// events
