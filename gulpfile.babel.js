@@ -13,7 +13,7 @@ import cprocess     from "child_process"
 import watchify     from "watchify"
 import autoprefixer from "autoprefixer"
 import vueify       from "vueify"
-import envify       from "envify"
+import envify       from "envify/custom"
 import yargs        from "yargs"
 import colors       from "ansi-colors"
 import logger       from "fancy-log"
@@ -112,7 +112,7 @@ gulp.task("prod-env", () => {
  */
 function setBrowserify(env = false, release = false) {
 
-	if(!env)
+	if (!env)
 		return logger(colors.red("Browserify environment not defined!"))
 
 	logger(colors.magenta("Browserify env: " + env))
@@ -123,13 +123,13 @@ function setBrowserify(env = false, release = false) {
 		.transform(babelify, {
 			presets: ["env"]
 		})
-		// envify
-		.transform(envify, { _: "purge", NODE_ENV: env })
 		// vueify
 		.transform(vueify, {
 			stylus : stylus_app_conf,
 			postcss: [autoprefixer(autoprefixer_conf)]
 		})
+		// envify
+		.transform({ global: true }, envify({ _: "purge", NODE_ENV: env }))
 
 	// set custom props
 	b.release = release
