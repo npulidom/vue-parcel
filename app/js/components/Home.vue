@@ -2,7 +2,7 @@
  * Home
  */
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 .home
 	padding 20px
@@ -12,7 +12,7 @@
 
 <template lang="pug">
 
-div.home
+.home
 
 	p {{ text }}
 	router-link(to="/section") Go to Section
@@ -20,6 +20,7 @@ div.home
 </template>
 
 <script>
+
 export default {
 
 	name: "Home",

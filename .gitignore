@@ -8,8 +8,5 @@ node_modules
 vendor
 
 # App
-app/assets/*.css
-app/assets/*.js
-
-# dist
+.cache
 dist

@@ -2,19 +2,24 @@
  * Section
  */
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 .section
 	padding 20px
 	color green
 
+	img
+		display block
+		max-width 100px
+		margin-bottom 10px
+
 </style>
 
 <template lang="pug">
 
-div.section
+.section
 
-	p {{ text }}
+	img(src="../../images/icons/example.png")
 	router-link(to="/") Go to Home
 
 </template>
@@ -22,8 +27,6 @@ div.section
 <script>
 export default {
 
-	name: "Section",
-
-	data: () => ({ text: "Hello World from Section!" })
+	name: "Section"
 }
 </script>

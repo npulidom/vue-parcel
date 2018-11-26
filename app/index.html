@@ -23,23 +23,16 @@
 	<meta name="msapplication-TileImage" content="images/favicons/mstile.png" />
 
 	<!-- inject:css -->
-	<link rel="stylesheet" type="text/css" href="assets/app.css" />
+	<link rel="stylesheet" type="text/css" href="stylus/app.styl" />
 	<!-- endinject -->
 
 </head>
 <body>
 
-	<div id="app">
-
-		<transition name="fade" mode="out-in" :duration="{ enter: 300, leave: 300 }" appear>
-			<router-view>
-			</router-view>
-		</transition>
-
-	</div>
+	<div id="app"></div>
 
 	<!-- inject:js -->
-	<script type="text/javascript" src="assets/app.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 	<!-- endinject -->
 
 	<noscript>

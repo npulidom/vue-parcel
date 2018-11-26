@@ -6,12 +6,6 @@
 		"node"   : true,
 		"es6"    : true
 	},
-	"globals": {
-		"_"        : false,
-		"$"        : false,
-		"jQuery"   : false,
-		"FastClick": false
-	},
 	"parserOptions": {
 		"sourceType": "module"
 	},
