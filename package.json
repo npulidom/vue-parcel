@@ -6,7 +6,7 @@
 	"repository": "https://github.com/npulidom/vue-webapp",
 	"scripts": {
 		"watch": "rm -rf dist && parcel app/index.html",
-		"build": "rm -rf dist && parcel build app/index.html --no-source-maps --no-cache"
+		"build": "rm -rf dist && parcel build app/index.html --no-source-maps"
 	},
 	"devDependencies": {
 		"@vue/component-compiler-utils": "^2.3.0",
