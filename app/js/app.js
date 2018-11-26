@@ -2,12 +2,11 @@
  * App.js
  */
 
-import Vue  from "vue"
-import Vuex from "vuex"
-
 // FastClick init
 import FastClick from "fastclick"
-FastClick(document.body)
+
+import Vue  from "vue"
+import Vuex from "vuex"
 
 import App from "./components/App.vue"
 
@@ -21,6 +20,9 @@ if (process.env.NODE_ENV == "production") {
 
 let init = () => {
 
+	// FastClick
+	FastClick(document.body)
+
 	// Store
 	Vue.use(Vuex)
 
@@ -29,7 +31,7 @@ let init = () => {
 		mutations: {}
 	}
 
-	// new app instance
+	// New app instance
 	new Vue({
 		el    : '#app',
 		store : new Vuex.Store(store),
