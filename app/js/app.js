@@ -2,9 +2,6 @@
  * App.js
  */
 
-import "lodash"
-import "jquery"
-
 import Vue  from "vue"
 import Vuex from "vuex"
 
