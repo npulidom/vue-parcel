@@ -39,7 +39,6 @@ npm run build
 
 ### Javascript
 
-- FastClick: [github](https://github.com/ftlabs/fastclick)
 - Vue 2: [site](https://vuejs.org/)
 - Vue Router 2: [site](http://router.vuejs.org/)
 - Vuex 2: [github](https://github.com/vuejs/vuex)

@@ -2,9 +2,6 @@
  * App.js
  */
 
-// FastClick init
-import FastClick from "fastclick"
-
 import Vue  from "vue"
 import Vuex from "vuex"
 
@@ -19,9 +16,6 @@ if (process.env.NODE_ENV == "production") {
 }
 
 let init = () => {
-
-	// FastClick
-	FastClick(document.body)
 
 	// Store
 	Vue.use(Vuex)
