@@ -1,5 +1,5 @@
-Vue Static webapp
-=================
+Vue Parcel
+==========
 
 [![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
 
@@ -17,8 +17,20 @@ Simple scaffolding project for building static SPA's with VueJs 2.
 
 - NodeJs >= 8.x
 - Yarn
+- Parcel
 
-## Install
+## Install Global Dependencies
+
+- yarn
+- parcel-bundler
+- eslint
+- eslint-plugin-vue
+
+```
+npm install -g yarn parcel-bundler eslint eslint-plugin-vue
+```
+
+## Install Project Dependencies
 ```
 yarn install
 ```
