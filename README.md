@@ -3,7 +3,7 @@ Vue Parcel
 
 [![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
 
-Simple scaffolding project for building static SPA's with VueJs 2.
+Simple boilerplate for building static SPA's with VueJs 2.
 
 ## Features
 
