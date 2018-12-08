@@ -15,9 +15,9 @@ Simple scaffolding project for building static SPA's with VueJs 2.
 
 ## Dependencies
 
-- NodeJs >= 8.x
+- NodeJs 8.x or later
 - Yarn
-- Parcel
+- Parcel 1.10.x or later
 
 ## Install Global Dependencies
 
@@ -45,6 +45,11 @@ npm run watch
 Build task
 ```
 npm run build
+```
+
+Cleans parcel cache
+```
+npm run clean
 ```
 
 ## Vendors

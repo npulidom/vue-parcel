@@ -19,7 +19,7 @@
 
 .section
 
-	img(src="../../images/icons/example.png")
+	img(src="../images/icons/example.png")
 	router-link(to="/") Go to Home
 
 </template>
