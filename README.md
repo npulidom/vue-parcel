@@ -23,11 +23,9 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 - yarn
 - parcel-bundler
-- eslint
-- eslint-plugin-vue
 
 ```
-npm install -g yarn parcel-bundler eslint eslint-plugin-vue
+npm install -g yarn parcel-bundler
 ```
 
 ## Install Project Dependencies
