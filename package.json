@@ -14,8 +14,6 @@
 		"@vue/component-compiler-utils": "^2.3.0",
 		"autoprefixer": "^9.3.1",
 		"cssnano": "^4.1.7",
-		"eslint": "^5.11.1",
-		"eslint-plugin-vue": "^5.0.0",
 		"pug": "^2.0.3",
 		"stylus": "^0.54.5",
 		"vue-hot-reload-api": "^2.3.1",

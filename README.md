@@ -8,6 +8,7 @@ Simple boilerplate for building static SPA's with VueJs 2.
 ## Features
 
 - Parcel Bundler
+- Babel 7
 - Hot Module Reload (HMR)
 - JS Linter: [eslint](http://eslint.org/)
 - CSS Autoprefixer (postcss)
@@ -23,9 +24,11 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 - yarn
 - parcel-bundler
+- eslint
+- eslint-plugin-vue
 
 ```
-npm install -g yarn parcel-bundler
+npm install -g yarn parcel-bundler eslint eslint-plugin-vue
 ```
 
 ## Install Project Dependencies
