@@ -5,8 +5,7 @@
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
 		"watch": "rm -rf dist && parcel app/index.html",
-		"build": "rm -rf dist && parcel build app/index.html --no-source-maps",
-		"clean": "rm -rf .cache"
+		"build": "rm -rf dist && parcel build app/index.html --no-source-maps"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
