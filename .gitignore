@@ -8,5 +8,5 @@ node_modules
 vendor
 
 # App
-.cache
+.parcel
 dist
