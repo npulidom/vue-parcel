@@ -21,17 +21,18 @@ Vue.use(VueRouter)
 
 // Routes
 const routes = [
+
 	{
-		path: "/",
-		component: Home
+		path     : "/",
+		component:  Home
 	},
 	{
-		path: "/section",
+		path     : "/section",
 		component: Section
 	},
 	// not found
 	{
-		path: "*",
+		path    : "*",
 		redirect: "/"
 	}
 ]

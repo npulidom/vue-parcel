@@ -21,12 +21,14 @@ let init = () => {
 	Vue.use(Vuex)
 
 	const store = {
+
 		state    : {},
 		mutations: {}
 	}
 
 	// New app instance
 	new Vue({
+
 		el    : '#app',
 		store : new Vuex.Store(store),
 		render: h => h(App)

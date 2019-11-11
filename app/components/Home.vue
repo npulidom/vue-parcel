@@ -15,6 +15,7 @@
 .home
 
 	p {{ text }}
+
 	router-link(to="/section") Go to Section
 
 </template>
