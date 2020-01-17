@@ -1,7 +1,8 @@
 {
-	"description": "vue-parcel",
+	"name": "vue-parcel",
+	"description": "Simple boilerplate for building static SPA's with VueJs.",
 	"license": "Unlicense",
-	"main": "README.md",
+	"main": "src/main.js",
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
 		"watch": "rm -rf dist && parcel app/index.html -d dist --cache-dir .parcel",
@@ -14,6 +15,7 @@
 		"@vue/component-compiler-utils": "~3.0.0",
 		"autoprefixer": "~9.6.1",
 		"cssnano": "~4.1.7",
+		"parcel": "~1.12.4",
 		"pug": "~2.0.4",
 		"stylus": "~0.54.7",
 		"vue-hot-reload-api": "~2.3.4",
