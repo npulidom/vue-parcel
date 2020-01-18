@@ -2,7 +2,7 @@
 	"name": "vue-parcel",
 	"description": "Simple boilerplate for building static SPA's with VueJs.",
 	"license": "Unlicense",
-	"main": "src/main.js",
+	"main": "app/app.js",
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
 		"watch": "rm -rf dist && parcel app/index.html -d dist --cache-dir .parcel",
