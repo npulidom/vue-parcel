@@ -1,7 +1,8 @@
-# Linux & OSX
+# Files
 *~
 .DS_Store
 *.log
+yarn.lock
 
 # Build & Packages
 node_modules
