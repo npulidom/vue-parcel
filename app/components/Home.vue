@@ -2,13 +2,15 @@
  * Home
  */
 
-<style lang="stylus" scoped>
+<script>
 
-.home
-	padding 20px
-	color blue
+export default {
 
-</style>
+	name: "Home",
+
+	data: () => ({ text: "Hello World from Home!" })
+}
+</script>
 
 <template lang="pug">
 
@@ -20,12 +22,10 @@
 
 </template>
 
-<script>
+<style lang="stylus" scoped>
 
-export default {
+.home
+	padding 20px
+	color blue
 
-	name: "Home",
-
-	data: () => ({ text: "Hello World from Home!" })
-}
-</script>
+</style>
