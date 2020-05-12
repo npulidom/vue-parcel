@@ -5,8 +5,8 @@
 	"main": "app/app.js",
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
-		"watch": "rm -rf dist && parcel app/index.html -d dist --cache-dir .parcel",
-		"build": "rm -rf dist && parcel build app/index.html -d dist --cache-dir .parcel --no-source-maps --detailed-report 20",
+		"watch": "rm -rf dist && parcel app/index.pug -d dist --cache-dir .parcel",
+		"build": "rm -rf dist && parcel build app/index.pug -d dist --cache-dir .parcel --no-source-maps --detailed-report 20",
 		"clean": "rm -rf dist .parcel"
 	},
 	"devDependencies": {
