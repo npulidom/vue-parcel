@@ -24,11 +24,9 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 - yarn
 - parcel-bundler
-- eslint
-- eslint-plugin-vue
 
 ```
-npm install -g yarn parcel-bundler eslint eslint-plugin-vue
+npm install -g yarn parcel-bundler
 ```
 
 ## Install Project Dependencies
@@ -40,26 +38,26 @@ yarn install
 
 Watch task
 ```
-npm run watch
+yarn run watch
 ```
 
 Build task
 ```
-npm run build
+yarn run build
 ```
 
 Cleans parcel cache
 ```
-npm run clean
+yarn run clean
 ```
 
 ## Vendors
 
 ### Javascript
 
-- Vue 2: [site](https://vuejs.org/)
-- Vue Router 2: [site](http://router.vuejs.org/)
-- Vuex 2: [github](https://github.com/vuejs/vuex)
+- Vue 2.x: [site](https://vuejs.org/)
+- Vue Router: [site](http://router.vuejs.org/)
+- Vuex: [github](https://github.com/vuejs/vuex)
 
 ### Stylus
 
