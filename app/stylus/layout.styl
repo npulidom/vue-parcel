@@ -6,34 +6,22 @@
 @import "modern-normalize/modern-normalize.css"
 
 // globals
+
+*, *::before, *::after
+	margin 0
+
 html
 	height 100%
 	overflow-x hidden
-	background lightGray
+	background lightGrey
 
 body
 	height auto
 	min-height 100%
 	overflow-x hidden
-	color #222
+	color black
+	text-rendering optimizeSpeed
 
-a, a:visited
-	text-decoration none
-	color crimson
-
-option
-	color gray
-
-button
-	-webkit-appearance none
-	-webkit-user-select none
-	appearance none
-	outline none
-	border none
-	background transparent
-	cursor pointer
-
-// disable border highlight in inputs
 *:focus
 	outline none
 
@@ -41,26 +29,72 @@ button
 	-webkit-user-select none
 	-webkit-touch-callout none
 
-// disable border highlight in inputs
-inputfocus,
-selectfocus,
-textareafocus,
-buttonfocus
-	outline none
+a, a:visited
+	text-decoration none
+	background-color transparent
+	-webkit-tap-highlight-color transparent
+	color green
+
+a:not([class])
+	text-decoration-skip-ink auto
+
+ul[class],
+ol[class]
+	padding 0
+	list-style none
+
+option
+	color black
+
+img
+	display block
+	max-width 100%
+	border-style none
+
+input,
+button,
+textarea,
+select
+	margin 0
+	padding 0
+	font inherit
+	line-height 1.15
+	appearance none
+	-webkit-appearance none
+
+// Reset buttons default styles
+button
+	border none
+	background transparent
+	cursor pointer
+	tap-highlight-color transparent
+	-webkit-tap-highlight-color transparent
+
+button, input
+	overflow visible
+
+input, textarea
+	background transparent
+	border none
+	border-radius none
+
+textarea
+	resize none
+	overflow auto
 
 // Edge, remove default cross in inputs
 input-ms-clear
 	display none
 
-// chrome autofill
+// Chrome autofill
 *:-webkit-autofill,
 *:-webkit-autofill:hover,
 *:-webkit-autofill:focus
-	-webkit-text-fill-color gray
-	-webkit-box-shadow 0 0 0px 1000px transparent inset
 	transition background-color 5000s ease-in-out 0s
+	-webkit-box-shadow 0 0 0px 1000px transparent inset
+	-webkit-text-fill-color inherit
 
-// no-script
+// Js disabled
 noscript p
 	position fixed
 	top 5%
@@ -68,6 +102,6 @@ noscript p
 	width 100%
 	text-align center
 
-// app wrapper
+// App wrapper
 #app
 	min-height 100%
