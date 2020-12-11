@@ -61,4 +61,4 @@ yarn run clean
 
 ### Stylus
 
-- Modern Normalize: [site](https://github.com/sindresorhus/modern-normalize)
+- Modern Normalize: [github](https://github.com/sindresorhus/modern-normalize)
