@@ -16,7 +16,7 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 ## Dependencies
 
-- NodeJs 10.x or later
+- NodeJs 12.x or later
 - Yarn
 - Parcel 1.10.x or later
 
@@ -61,4 +61,4 @@ yarn run clean
 
 ### Stylus
 
-- Normalize: [site](https://necolas.github.io/normalize.css/)
+- Modern Normalize: [site](https://github.com/sindresorhus/modern-normalize)

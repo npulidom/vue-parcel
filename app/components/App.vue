@@ -7,8 +7,8 @@
 import Vue       from "vue"
 import VueRouter from "vue-router"
 
-import Home      from "./Home.vue"
-import Section   from "./Section.vue"
+import Home    from "./Home.vue"
+import Section from "./Section.vue"
 
 Vue.use(VueRouter)
 
@@ -32,7 +32,8 @@ const routes = [
 
 export default {
 
-	name  : "App",
+	name: "App",
+
 	router: new VueRouter({ routes })
 }
 </script>
