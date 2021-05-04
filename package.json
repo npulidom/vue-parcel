@@ -1,7 +1,7 @@
 {
 	"name": "vue-parcel",
 	"description": "Simple boilerplate for building static SPA's with VueJs 2.",
-	"license": "Unlicense",
+	"license": "UNLICENSED",
 	"main": "app/app.js",
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
