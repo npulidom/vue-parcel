@@ -17,12 +17,12 @@ Simple boilerplate for building static SPA's with VueJs 2.
 ## Dependencies
 
 - NodeJs 12.x or later
-- Yarn
+- yarn or pnpm
 - Parcel 2.x or later
 
 ## Install Global Dependencies
 
-- yarn
+- yarn / pnpm
 - parcel
 
 ```
@@ -31,7 +31,7 @@ npm install -g yarn parcel
 
 ## Install Project Dependencies
 ```
-yarn install
+yarn
 ```
 
 ## Usage
