@@ -5,27 +5,31 @@
 	"main": "app/app.js",
 	"repository": "https://github.com/npulidom/vue-parcel",
 	"scripts": {
-		"watch": "rm -rf dist && parcel app/index.pug -d dist --cache-dir .parcel",
-		"build": "rm -rf dist && parcel build app/index.pug -d dist --cache-dir .parcel --no-source-maps --detailed-report 20",
+		"watch": "rm -rf dist && parcel app/index.pug --dist-dir dist --cache-dir .parcel",
+		"build": "rm -rf dist && parcel build app/index.pug --dist-dir dist --cache-dir .parcel --no-source-maps --detailed-report 20",
 		"clean": "rm -rf dist .parcel"
 	},
+	"browserslist": "> 0.5%, last 2 versions, not dead",
 	"devDependencies": {
-		"@babel/core": "~7.12.10",
-		"@babel/preset-env": "~7.12.10",
-		"@vue/component-compiler-utils": "~3.2.0",
-		"autoprefixer": "~9.8.6",
-		"cssnano": "~4.1.10",
-		"eslint": "~7.15.0",
-		"eslint-plugin-vue": "~7.2.0",
-		"pug": "~3.0.0",
-		"stylus": "~0.54.8",
-		"vue-hot-reload-api": "~2.3.4",
-		"vue-template-compiler": "~2.6.12"
+		"@parcel/config-default": "~2.0.1",
+		"@parcel/core": "~2.0.1",
+		"@parcel/transformer-pug": "~2.0.1",
+		"@parcel/transformer-stylus": "~2.0.1",
+		"@parcel/transformer-vue": "~2.0.1",
+		"@vue/component-compiler-utils": "~3.3.0",
+		"autoprefixer": "~10.4.0",
+		"cssnano": "~5.0.9",
+		"parcel-optimizer-css-url": "~2.0.1",
+		"parcel-transformer-vue2": "~0.1.4",
+		"postcss": "~8.3.11",
+		"pug": "~3.0.2",
+		"stylus": "~0.55.0",
+		"vue-template-compiler": "~2.6.14"
 	},
 	"dependencies": {
-		"modern-normalize": "~1.0.0",
-		"vue": "~2.6.12",
-		"vue-router": "~3.4.9",
-		"vuex": "~3.6.0"
+		"modern-normalize": "~1.1.0",
+		"vue": "~2.6.14",
+		"vue-router": "~3.5.3",
+		"vuex": "~3.6.2"
 	}
 }

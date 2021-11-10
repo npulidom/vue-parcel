@@ -3,6 +3,8 @@
 .DS_Store
 *.log
 yarn.lock
+pnpm-*
+parcel-*
 
 # Build & Packages
 node_modules

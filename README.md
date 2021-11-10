@@ -18,15 +18,15 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 - NodeJs 12.x or later
 - Yarn
-- Parcel 1.12.x or later
+- Parcel 2.x or later
 
 ## Install Global Dependencies
 
 - yarn
-- parcel-bundler
+- parcel
 
 ```
-npm install -g yarn parcel-bundler
+npm install -g yarn parcel
 ```
 
 ## Install Project Dependencies
