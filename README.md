@@ -16,7 +16,7 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 ## Dependencies
 
-- NodeJs 12.x or later
+- NodeJs 14.x or later
 - yarn or pnpm
 - Parcel 2.x or later
 
