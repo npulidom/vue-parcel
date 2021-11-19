@@ -7,7 +7,7 @@ Simple boilerplate for building static SPA's with VueJs 2.
 
 ## Features
 
-- Parcel Bundler
+- Parcel 2 (Bundler)
 - Babel 7
 - Hot Module Reload (HMR)
 - JS Linter: [eslint](http://eslint.org/)
