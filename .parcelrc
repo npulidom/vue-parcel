@@ -1,6 +1,7 @@
 {
-	"extends": ["@parcel/config-default", "parcel-config-vue2"],
+	"extends": ["@parcel/config-default"],
+	"resolvers": ["parcel-resolver-vue3-runtime", "..."],
 	"optimizers": {
-		"*.css": ["parcel-optimizer-css-url", "@parcel/optimizer-cssnano"]
+		"*.css": ["@parcel/optimizer-cssnano"]
 	}
 }
