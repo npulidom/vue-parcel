@@ -19,7 +19,8 @@ export default {
 
 .home
 
-	p {{ text }}
+	p(v-if="false") {{ text }}
+	p(v-else) bug
 
 	router-link(to="/section") Go to Section
 
