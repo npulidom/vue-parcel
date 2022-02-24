@@ -54,7 +54,7 @@ yarn run clean
 
 - Vue 2.x: [site](https://vuejs.org/)
 - Vue Router: [site](http://router.vuejs.org/)
-- Vuex: [github](https://github.com/vuejs/vuex)
+- Vuex: [site](https://vuex.vuejs.org/)
 
 ### Stylus
 

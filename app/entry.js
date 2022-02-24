@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == "production") {
 	Vue.config.productionTip = false
 }
 
-let init = () => {
+const init = () => {
 
 	// Store
 	Vue.use(Vuex)
@@ -34,4 +34,5 @@ let init = () => {
 		render: h => h(App)
 	})
 }
+
 init()
