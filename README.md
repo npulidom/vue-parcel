@@ -3,7 +3,7 @@ Vue Parcel
 
 [![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
 
-Simple boilerplate for building static SPA's with VueJs 2.
+Simple boilerplate for building static SPA's with VueJs 3.
 
 ## Features
 
@@ -52,7 +52,7 @@ yarn run clean
 
 ### Javascript
 
-- Vue 2.x: [site](https://vuejs.org/)
+- Vue 3.x: [site](https://vuejs.org/)
 - Vue Router: [site](http://router.vuejs.org/)
 - Vuex: [github](https://github.com/vuejs/vuex)
 
