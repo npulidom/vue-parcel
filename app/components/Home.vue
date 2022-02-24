@@ -8,7 +8,10 @@ export default {
 
 	name: "Home",
 
-	data: () => ({ text: "Hello World from Home!" })
+	data: () => ({
+
+		text: "Hello World from Home!"
+	})
 }
 </script>
 

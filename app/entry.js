@@ -2,37 +2,24 @@
  * App Entrypoint
  */
 
-import Vue  from "vue"
-import Vuex from "vuex"
+import { createApp } from 'vue'
+// feature flags
+globalThis.__VUE_OPTIONS_API__ = process.env.NODE_ENV == "development"
+globalThis.__VUE_PROD_DEVTOOLS__ = process.env.NODE_ENV == "development"
 
-import App from "./components/App.vue"
-
-// Vue setup
-if (process.env.NODE_ENV == "production") {
-
-	Vue.config.silent        = true
-	Vue.config.devtools      = false
-	Vue.config.productionTip = false
-}
+import App    from './components/App.vue'
+import router from './modules/router.js'
+import store  from './modules/store.js'
 
 const init = () => {
 
-	// Store
-	Vue.use(Vuex)
+	// new app instance
+	const app = createApp(App)
+				.use(store())
+				.use(router())
 
-	const store = {
-
-		state    : {},
-		mutations: {}
-	}
-
-	// New app instance
-	new Vue({
-
-		el    : '#app',
-		store : new Vuex.Store(store),
-		render: h => h(App)
-	})
+	// mount
+	app.mount('#app')
 }
 
 init()
