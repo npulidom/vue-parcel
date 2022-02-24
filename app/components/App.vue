@@ -40,7 +40,16 @@ export default {
 
 <template lang="pug">
 
-transition(name="fade" mode="out-in" :duration="{ enter: 300, leave: 300 }" appear)
-	router-view
+#app
+
+	transition(name="fade" mode="out-in" :duration="{ enter: 300, leave: 300 }" appear)
+		router-view
 
 </template>
+
+<style lang="stylus">
+
+#app
+	min-height 100vh
+
+</style>
