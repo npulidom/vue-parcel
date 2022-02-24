@@ -13,8 +13,6 @@ export default {
 
 .section
 
-	img(src="../images/icons/example.png" alt="")
-
 	router-link(to="/") Go to Home
 
 </template>
