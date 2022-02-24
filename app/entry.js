@@ -1,5 +1,5 @@
 /**
- * App.js
+ * App Entrypoint
  */
 
 import Vue  from "vue"
