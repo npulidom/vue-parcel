@@ -22,6 +22,8 @@ export default {
 	p(v-if="false") {{ text }}
 	p(v-else) bug
 
+	//- usign v-else="" compilation works
+
 	router-link(to="/section") Go to Section
 
 </template>
