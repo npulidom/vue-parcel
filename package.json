@@ -20,7 +20,7 @@
 		"@vue/component-compiler-utils": "~3.3.0",
 		"autoprefixer": "~10.4.2",
 		"cssnano": "~5.0.17",
-		"parcel-resolver-vue3-runtime": "2.0.1",
+		"parcel-resolver-vue3-runtime": "~2.1.0",
 		"postcss": "~8.4.6",
 		"pug": "~3.0.2",
 		"stylus": "~0.57.0"
