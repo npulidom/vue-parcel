@@ -19,8 +19,8 @@ Simple boilerplate for building static SPA's with VueJs 3.
 
 ## Install Global Dependencies
 
-- yarn / pnpm
-- parcel
+- `yarn` or `pnpm`
+- `parcel`
 
 ```
 npm install -g yarn parcel
@@ -28,24 +28,28 @@ npm install -g yarn parcel
 
 ## Install Project Dependencies
 ```
+# with yarn
 yarn
+
+# or with pnpm
+pnpm i --shamefully-hoist
 ```
 
 ## Usage
 
 Watch task
 ```
-yarn run watch
+npm run watch
 ```
 
 Build task
 ```
-yarn run build
+npm run build
 ```
 
 Cleans parcel cache
 ```
-yarn run clean
+npm run clean
 ```
 
 ## Vendors
