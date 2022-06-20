@@ -10,20 +10,20 @@
 	},
 	"browserslist": "> 0.5%, last 2 versions, not dead",
 	"devDependencies": {
-		"@parcel/config-default": "~2.6.0",
-		"@parcel/core": "~2.6.0",
-		"@parcel/transformer-pug": "~2.6.0",
-		"@parcel/transformer-stylus": "~2.6.0",
-		"@parcel/transformer-vue": "~2.6.0",
+		"@parcel/config-default": "~2.6.1",
+		"@parcel/core": "~2.6.1",
+		"@parcel/transformer-pug": "~2.6.1",
+		"@parcel/transformer-stylus": "~2.6.1",
+		"@parcel/transformer-vue": "~2.6.1",
 		"@vue/component-compiler-utils": "~3.3.0",
 		"parcel-optimizer-css-url": "~2.0.2",
 		"pug": "~3.0.2",
-		"stylus": "~0.57.0"
+		"stylus": "~0.58.1"
 	},
 	"dependencies": {
 		"modern-normalize": "~1.1.0",
-		"vue": "~3.2.36",
-		"vue-router": "~4.0.15",
+		"vue": "~3.2.37",
+		"vue-router": "~4.0.16",
 		"vuex": "~4.0.2"
 	}
 }
