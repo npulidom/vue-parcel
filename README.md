@@ -19,7 +19,7 @@ Simple boilerplate for building static SPA's with VueJs 3.
 
 ## Install Global Dependencies
 
-- `yarn` or `pnpm`
+- `yarn` / `pnpm`
 - `parcel`
 
 ```

@@ -29,6 +29,5 @@ export default {
 
 .home
 	padding 20px
-	color orange
 
 </style>
