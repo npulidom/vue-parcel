@@ -16,7 +16,6 @@
 		"@parcel/transformer-stylus": "~2.8.0",
 		"@parcel/transformer-vue": "~2.8.0",
 		"@vue/component-compiler-utils": "~3.3.0",
-		"parcel-optimizer-css-url": "~2.0.2",
 		"pug": "~3.0.2",
 		"stylus": "~0.59.0"
 	},
