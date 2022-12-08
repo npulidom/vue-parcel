@@ -9,12 +9,11 @@ Simple boilerplate for building static SPA's with VueJs 3.
 
 - Parcel 2 (Bundler)
 - Hot Module Reload (HMR)
-- CSS Autoprefixer (postcss)
 
 ## Dependencies
 
 - NodeJs 14.x or later
-- yarn or pnpm
+- **yarn** or **pnpm**
 - Parcel 2.x or later
 
 ## Install Global Dependencies

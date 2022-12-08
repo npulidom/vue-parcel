@@ -2,17 +2,12 @@
  * Home
  */
 
-<script>
+<script setup>
 
-export default {
+import { ref } from 'vue'
 
-	name: "Home",
+const text = ref("Hello World from Home!")
 
-	data: () => ({
-
-		text: "Hello World from Home!"
-	})
-}
 </script>
 
 <template lang="pug">
