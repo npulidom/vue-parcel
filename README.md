@@ -9,6 +9,7 @@ Simple boilerplate for building static SPA's with VueJs 3.
 
 - Parcel 2 (Bundler)
 - Hot Module Reload (HMR)
+- Clean code & markup (Stylus + Pug)
 
 ## Dependencies
 
