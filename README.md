@@ -3,7 +3,9 @@ Vue Parcel
 
 [![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
 
-Simple boilerplate for building static SPA's with VueJs 3.
+Simple boilerplate for building static SPA's with VueJs 3 using Parcel.
+
+**NOTE**: try a faster boilerplate with [Vite](https://github.com/richardevcom/vue3-boilerplate) instead.
 
 ## Features
 
