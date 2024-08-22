@@ -5,7 +5,7 @@ Vue Parcel
 
 Simple SPA boilerplate with VueJs 3 using Parcel.
 
-**NOTE**: try a faster boilerplate with [Vite](https://github.com/richardevcom/vue3-boilerplate) instead.
+**NOTE**: try a faster boilerplate with [Vite](https://github.com/richardevcom/vue3-boilerplate) instead. Try also [Project IDX](https://idx.dev/).
 
 ## Features
 
