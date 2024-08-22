@@ -1,7 +1,7 @@
 Vue Parcel
 ==========
 
-[![Maintenance](https://img.shields.io/badge/maintained%3F-yes-green.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/maintained%3F-no-red.svg)](https://github.com/npulidom/vue-webapp/graphs/commit-activity)
 
 Simple SPA boilerplate with VueJs 3 using Parcel.
 
